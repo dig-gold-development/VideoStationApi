@@ -4,8 +4,11 @@ spring:
     show-sql: true
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    username: mysql1901228385
-    password: 8K38540be6
-    url: jdbc:mysql://43.226.44.139:3306/mysql1901228385_db?characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: mysql190409c075
+    password: c075c9X31c
+    url: jdbc:mysql://43.226.43.146:3306/mysql190409c075_db?characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
 
 
+mybatis:
+  typeAliasesPackage: com.site.vs.videostation.entity
+  mapperLocations: classpath:mapper/*.xml
