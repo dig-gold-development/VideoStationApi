@@ -9,6 +9,17 @@ spring:
     url: jdbc:mysql://43.226.43.146:3306/mysql190409c075_db?characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
 
 
+
 mybatis:
   typeAliasesPackage: com.site.vs.videostation.entity
   mapperLocations: classpath:mapper/*.xml
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+logging:
+  level:
+    com.site.vs.videostation.mapper: trace
+

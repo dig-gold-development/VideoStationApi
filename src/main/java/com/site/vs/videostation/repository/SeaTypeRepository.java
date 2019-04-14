@@ -1,4 +1,4 @@
-package com.site.vs.videostation.dao;
+package com.site.vs.videostation.repository;
 
 
 import com.site.vs.videostation.entity.SeaType;

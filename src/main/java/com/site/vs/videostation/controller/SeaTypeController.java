@@ -1,9 +1,7 @@
-package com.site.vs.videostation.Controller;
+package com.site.vs.videostation.controller;
 
 
-import com.site.vs.videostation.dao.DisplayMapper;
-import com.site.vs.videostation.dao.SeaTypeRepository;
-import com.site.vs.videostation.entity.Display;
+import com.site.vs.videostation.repository.SeaTypeRepository;
 import com.site.vs.videostation.entity.SeaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "home")
-public class HomePageController {
+@RequestMapping(value = "types")
+public class SeaTypeController {
     @Autowired
-    private DisplayMapper displayMapper;
+    private SeaTypeRepository seaTypeRepository;
+
     @ResponseBody
     @GetMapping
-    public List<Display> getHomePage() {
-        return displayMapper.findDisplayDataByTypeid(30);
+    public List<SeaType> selAll() {
+        return seaTypeRepository.findAll();
     }
+
 }
