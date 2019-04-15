@@ -2,6 +2,7 @@ package com.site.vs.videostation.controller;
 
 
 import com.github.pagehelper.PageHelper;
+import com.site.vs.videostation.base.BaseController;
 import com.site.vs.videostation.dao.DisplayDao;
 import com.site.vs.videostation.mapper.DisplayMapper;
 import com.site.vs.videostation.entity.Display;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "home")
-public class HomePageController {
+public class HomePageController extends BaseController {
 
     @Autowired
     private HomePageService homeService;

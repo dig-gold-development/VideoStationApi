@@ -19,6 +19,12 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+
+
+
+
+
 logging:
   level:
     com.site.vs.videostation.mapper: trace

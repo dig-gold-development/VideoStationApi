@@ -1,6 +1,7 @@
 package com.site.vs.videostation.controller;
 
 
+import com.site.vs.videostation.base.BaseController;
 import com.site.vs.videostation.repository.SeaTypeRepository;
 import com.site.vs.videostation.entity.SeaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "types")
-public class SeaTypeController {
+public class SeaTypeController extends BaseController {
     @Autowired
     private SeaTypeRepository seaTypeRepository;
 
