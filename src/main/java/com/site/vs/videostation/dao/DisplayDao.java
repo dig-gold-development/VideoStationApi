@@ -14,14 +14,14 @@ public class DisplayDao {
     @Autowired
     DisplayMapper mapper;
 
-    public List<Display> findDisplayDataRecentByTypeid(int id) {
+    public List<Display> findDisplayDataRecentByTypeId(int id) {
         PageHelper.startPage(1, 6);
-       return  mapper.findDisplayDataRecentByTypeid(id);
+       return  mapper.findDisplayDataRecentByTypeId(id);
     }
 
-    public List<Display> findRankByTypeid(int id ,int page) {
+    public List<Display> findRankByTypeId(int id ,int page) {
         PageHelper.startPage(page,10);
-        List<Display>  disPlayList = mapper.findDisplayDataRecentByTypeid(id);
+        List<Display>  disPlayList = mapper.findDisplayDataRecentByTypeId(id);
         return disPlayList;
 
 

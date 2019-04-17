@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
+
 public class ApiResponse <T> implements Serializable {
 
     private  int code;
@@ -14,6 +14,33 @@ public class ApiResponse <T> implements Serializable {
     public ApiResponse(int code, String message, T data) {
         this.code = code;
         this.message = message;
+        this.data = data;
+    }
+    public ApiResponse(){
+
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
         this.data = data;
     }
 }

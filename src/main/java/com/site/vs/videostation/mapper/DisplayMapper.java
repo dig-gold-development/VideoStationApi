@@ -8,6 +8,6 @@ import java.util.List;
 
 
 public interface DisplayMapper {
-    List<Display> findDisplayDataRecentByTypeid(int id);
+    List<Display> findDisplayDataRecentByTypeId(int id);
 
 }

@@ -14,7 +14,7 @@ public class RankService {
     @Autowired
     DisplayDao displayDao;
 
-    public List<Display> findRankByTypeid(int id, int page) {
-       return displayDao.findRankByTypeid(id,page);
+    public List<Display> findRankByTypeId(int id, int page) {
+       return displayDao.findRankByTypeId(id,page);
     }
 }

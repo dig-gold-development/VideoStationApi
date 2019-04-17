@@ -18,9 +18,9 @@ public class HomePageService {
 
     public HashMap<String,Object> findHomeVideoForRecent() {
 
-       List<Display> moiveList = displayDao.findDisplayDataRecentByTypeid(28);
+       List<Display> moiveList = displayDao.findDisplayDataRecentByTypeId(28);
         hashMap.put("move_list",moiveList);
-       List<Display> teleplayList = displayDao.findDisplayDataRecentByTypeid(30);
+       List<Display> teleplayList = displayDao.findDisplayDataRecentByTypeId(30);
        hashMap.put("tv_list",teleplayList);
        return hashMap;
 
