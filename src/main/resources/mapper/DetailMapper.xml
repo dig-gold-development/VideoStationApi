@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.site.vs.videostation.mapper.DetailMapper" >
-    <select id="findDetialById" parameterType="int" resultType="com.site.vs.videostation.entity.Display">
+    <select id="findDetialById" parameterType="int" resultType="com.site.vs.videostation.entity.Detail">
 
-		select v_id,v_name,v_pic from sea_data where tid = #{tid}
+		select a.v_id,v_name,v_pic,v_actor,v_publishyear,v_publisharea,v_addtime,v_director,v_enname,body from sea_data a , sea_playdata b where a.v_id = b.v_id and a.v_id = #{tid}
 	</select>
 
 

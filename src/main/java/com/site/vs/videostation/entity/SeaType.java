@@ -14,13 +14,5 @@ public class SeaType {
     private int upid;
     private String tname;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="tid")
-    private SeaData seaData;
-
-
-
-
-
 
 }

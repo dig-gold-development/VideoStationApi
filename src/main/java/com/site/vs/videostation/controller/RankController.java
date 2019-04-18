@@ -18,8 +18,8 @@ public class RankController  {
     private RankService rankService;
 
 
-    @PostMapping(value = "/getRankByid")
-    public   ApiResponse getRankByid(@RequestParam("page") int page, @RequestParam("type") int type) {
+    @PostMapping(value = "/getRankById")
+    public   ApiResponse getRankById(@RequestParam("page") int page, @RequestParam("type") int type) {
         List<Display> displayList =  rankService.findRankByTypeId(type, page);
         PageBean<Display> pageBean = new PageBean(displayList);
         ApiResponse data = ApiResponseUtil.success(pageBean);
