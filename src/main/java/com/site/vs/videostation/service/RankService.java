@@ -23,7 +23,7 @@ public class RankService {
     public List<Display> findRankByTopId(int id, int page) {
 
 
-            List<Integer>  list = new ArrayList<>();
+            List<Integer>  ids = new ArrayList<>();
             //电影
             List<Category> categoryList = categoryMapper.getAll(id);
 
@@ -31,11 +31,16 @@ public class RankService {
                 List<Category> childs = c.getCategoryList();
                 for (Category c1 : childs) {
 
-                    list.add(c1.getTid());
+                    ids.add(c1.getTid());
                 }
 
             }
-            return  displayDao.findRankByTypeIds(list,page);
+            if (ids.size() > 0) {
+                return  displayDao.findRankByTypeIds(ids,page);
+            }else {
+                return  displayDao.findRankByTypeId(id,page);
+            }
+
 
     }
 }
