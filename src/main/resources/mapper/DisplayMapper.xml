@@ -3,8 +3,11 @@
 <mapper namespace="com.site.vs.videostation.mapper.DisplayMapper" >
     <select id="findDisplayDataRecentByTypeId" parameterType="int" resultType="com.site.vs.videostation.entity.Display">
 
-		select v_id,v_name,v_pic from sea_data where tid = #{tid}
+		select v_id,v_name,v_pic from sea_data where tid = #{tid}  order by v_addtime desc
 	</select>
 
+	<select id="findDisplayDataRecent" resultType="com.site.vs.videostation.entity.Display">
+		select v_id,v_name,v_pic from sea_data order by v_addtime desc limit 5
+	</select>
 
 </mapper>

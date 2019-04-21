@@ -1,6 +1,7 @@
 package com.site.vs.videostation.controller;
 
 
+import com.site.vs.videostation.entity.ApiResponse;
 import com.site.vs.videostation.service.HomePageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +19,9 @@ public class HomePageController  {
 
 
     @GetMapping
-    public HashMap<String,Object> getHomePage() {
+    public ApiResponse getHomePage() {
 
-        HashMap<String,Object> homeData = homeService.findHomeVideoForRecent();
+        ApiResponse homeData = homeService.findHomeVideoForRecent();
         return homeData;
     }
 }

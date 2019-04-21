@@ -1,7 +1,10 @@
 package com.site.vs.videostation.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class Detail {
@@ -24,7 +27,10 @@ public class Detail {
     private  String v_director;
     @JsonProperty("enname")
     private  String venname;
-    @JsonProperty("vod_url_list")
+    @JsonIgnore
     private  String body;
+
+    @JsonProperty("vod_url_list")
+    private List<Source> list;
 
 }

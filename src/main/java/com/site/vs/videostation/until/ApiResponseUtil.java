@@ -6,7 +6,7 @@ public class ApiResponseUtil {
     public static ApiResponse success(Object object) {
         ApiResponse response = new ApiResponse();
         response.setData(object);
-        response.setCode(0);
+        response.setCode(200);
         response.setMessage("success");
         return response;
     }
