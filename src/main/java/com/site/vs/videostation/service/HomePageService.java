@@ -74,19 +74,22 @@ public class HomePageService {
     }
 
     public  List<Display> findTopCategorayByTypeId(int id) {
-        List<Display> list = new ArrayList<>();
+        List<Integer> ids = new ArrayList<>();
         //电影
         List<Category> categoryList = categoryMapper.getAll(id);
 
         for (Category c: categoryList) {
             List<Category> childs = c.getCategoryList();
             for (Category c1 : childs) {
-              List<Display> disPlayList = displayDao.findDisplayDataRecentByTypeId(c1.getTid());
-              for (Display disPlay : disPlayList) {
-                  list.add(disPlay);
-              }
+                ids.add(c1.getTid());
+
             }
         }
-        return list;
+        if (ids.size() > 0) {
+            return  displayDao.findDisplayDataRecentByTypeIds(ids);
+        }else {
+            return  displayDao.findDisplayDataRecentByTypeId(id);
+        }
+
     }
 }

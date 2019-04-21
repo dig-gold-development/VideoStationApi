@@ -52,6 +52,9 @@ public class DetailController {
                    if (index ==  1) {
                        movie.setPlayName(unit);
                    }else if (index == 2) {
+                       if (unit.endsWith("mp4") || unit.endsWith("m3u8")) {
+                           movie.setIsRealUrl(1);
+                       }
                        movie.setPlayUrl(unit);
                    }else  if (index == 3) {
                        movie.setSource(unit);

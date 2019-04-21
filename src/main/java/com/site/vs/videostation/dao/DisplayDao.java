@@ -19,6 +19,11 @@ public class DisplayDao {
        return  mapper.findDisplayDataByTypeId(id);
     }
 
+    public  List<Display> findDisplayDataRecentByTypeIds(List<Integer> ids) {
+        PageHelper.startPage(1, 6);
+        return  mapper.findDisplayDataByTypeIds(ids);
+    }
+
     public List<Display> findDisplayDataRecent() {
         return mapper.findDisplayDataRecent();
     }
