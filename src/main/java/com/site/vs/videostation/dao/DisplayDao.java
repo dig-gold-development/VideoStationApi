@@ -16,7 +16,7 @@ public class DisplayDao {
 
     public List<Display> findDisplayDataRecentByTypeId(int id) {
         PageHelper.startPage(1, 6);
-       return  mapper.findDisplayDataRecentByTypeId(id);
+       return  mapper.findDisplayDataByTypeId(id);
     }
 
     public List<Display> findDisplayDataRecent() {
@@ -25,7 +25,13 @@ public class DisplayDao {
 
     public List<Display> findRankByTypeId(int id ,int page) {
         PageHelper.startPage(page,10);
-        List<Display>  disPlayList = mapper.findDisplayDataRecentByTypeId(id);
+        List<Display>  disPlayList = mapper.findDisplayDataByTypeId(id);
+        return disPlayList;
+    }
+
+    public  List<Display> findRankByTypeIds(List<Integer> ids,int page) {
+        PageHelper.startPage(page,10);
+        List<Display>  disPlayList = mapper.findDisplayDataByTypeIds(ids);
         return disPlayList;
     }
 }

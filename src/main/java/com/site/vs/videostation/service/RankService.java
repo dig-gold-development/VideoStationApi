@@ -20,23 +20,22 @@ public class RankService {
     @Autowired
     CategoryMapper categoryMapper;
 
-    public List<Display> findRankByTypeId(int id, int page) {
+    public List<Display> findRankByTopId(int id, int page) {
 
 
-            List<Display> list = new ArrayList<>();
+            List<Integer>  list = new ArrayList<>();
             //电影
             List<Category> categoryList = categoryMapper.getAll(id);
 
             for (Category c: categoryList) {
                 List<Category> childs = c.getCategoryList();
                 for (Category c1 : childs) {
-                    List<Display> disPlayList = displayDao.findRankByTypeId(c1.getTid(),page);
-                    for (Display disPlay : disPlayList) {
-                        list.add(disPlay);
-                    }
+
+                    list.add(c1.getTid());
                 }
+
             }
-            return list;
+            return  displayDao.findRankByTypeIds(list,page);
 
     }
 }
