@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.site.vs.videostation.mapper.DetailMapper" >
-    <select id="findDetialById" parameterType="int" resultType="com.site.vs.videostation.entity.Detail">
 
-		select a.v_id,v_name,v_pic,v_actor,v_publishyear,v_publisharea,v_addtime,v_director,v_enname,body from sea_data a , sea_playdata b where a.v_id = b.v_id and a.v_id = #{tid}
+	<resultMap id="detailMap" type="Detail">
+		<id property="v_id" column="v_id"></id>
+		<result property="v_name" column="v_name"></result>
+		<result property="v_pic" column="v_pic"></result>
+		<result property="v_actor" column="v_actor"></result>
+		<result property="v_publishyear" column="v_publishyear"></result>
+		<result property="v_publisharea" column="v_publisharea"></result>
+		<result property="v_addtime" column="v_addtime"></result>
+		<result property="v_director" column="v_director"></result>
+		<result property="v_enname" column="v_enname"></result>
+		<result property="body" column="play"></result>
+		<result property="content" column="content"></result>
+		<result property="tid" column="tid"></result>
+		<result property="tname" column="tname"></result>
+
+	</resultMap>
+
+
+    <select id="findDetialById" parameterType="int" resultMap="detailMap">
+		select a.v_id,a.tid,d.tname,v_name,v_pic,v_actor,v_publishyear,v_publisharea,v_addtime,v_director,v_enname,b.body as play,c.body as content from sea_data a , sea_playdata b, sea_content c ,sea_type d where a.v_id = b.v_id  and  b.v_id = c.v_id and  a.tid = d.tid  and a.v_id = #{tid}
 	</select>
 
 

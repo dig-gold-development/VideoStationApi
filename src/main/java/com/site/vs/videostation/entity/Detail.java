@@ -9,6 +9,8 @@ import java.util.List;
 @Data
 public class Detail {
 
+    private  int tid;
+    private  String tname;
     @JsonProperty("id")
     private  int v_id;
     @JsonProperty("name")
@@ -26,9 +28,12 @@ public class Detail {
     @JsonProperty("director")
     private  String v_director;
     @JsonProperty("enname")
-    private  String venname;
+    private  String v_enname;
     @JsonIgnore
     private  String body;
+    @JsonProperty("description")
+    private  String content;
+
 
     @JsonProperty("vod_url_list")
     private List<Source> list;

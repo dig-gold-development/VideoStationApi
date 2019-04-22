@@ -3,11 +3,25 @@ spring:
   jpa:
     show-sql: true
   datasource:
+    type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
     username: mysql190409c075
     password: c075c9X31c
     url: jdbc:mysql://43.226.43.146:3306/mysql190409c075_db?characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-
+    hikari:.connectionTestQuery: SELECT 1
+    hikari:.connectionTimeout: 30000
+    hikari:.idleTimeout: 600000
+    hikari:.maximum-pool-size: 80
+    hikari:.maxLifetime: 18000000
+    hikari:.minimum-idle: 5
+    max-idle: 10
+    max-wait: 10000
+    min-idle: 5
+    initial-size: 5
+    validation-query: SELECT 1
+    test-on-borrow: false
+    test-while-idle: true
+    time-between-eviction-runs-millis: 18000
 
 
 mybatis:
