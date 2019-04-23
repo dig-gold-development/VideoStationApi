@@ -3,7 +3,23 @@
 <mapper namespace="com.site.vs.videostation.mapper.DisplayMapper" >
     <select id="findDisplayDataByTypeId" parameterType="int" resultType="Display">
 
-		select v_id,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where tid = #{tid}  order by v_addtime desc
+		SELECT
+			v_id,
+			v_name,
+			CASE
+				<![CDATA[ locate( 'http://', v_pic ) ]]>
+			WHEN 0 THEN
+				<![CDATA[ CONCAT( 'host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
+			END as v_pic,
+			v_actor,
+			v_publishyear,
+			v_publisharea
+		FROM
+			sea_data
+		WHERE
+			tid = #{id}
+		ORDER BY
+			v_addtime DESC
 	</select>
 
 	<select id="findDisplayDataRecent" resultType="Display">
@@ -11,7 +27,19 @@
 	</select>
 
 	<select id="findDisplayDataByTypeIds" resultType="Display">
-		select  v_id,v_name,v_pic,v_actor,v_publishyear,v_publisharea  from sea_data where  tid in
+		select  v_id,
+		v_name,
+		CASE
+		<![CDATA[ locate( 'http://', v_pic ) ]]>
+		WHEN 0 THEN
+		<![CDATA[ CONCAT( 'host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
+		END as v_pic,
+		v_actor,
+		v_publishyear,
+		v_publisharea
+		from
+			sea_data
+		where  tid in
 		<foreach collection="list" item="tid" separator="," open="(" close=")">
 			#{tid}
 		</foreach>

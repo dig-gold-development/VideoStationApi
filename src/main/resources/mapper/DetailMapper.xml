@@ -21,7 +21,32 @@
 
 
     <select id="findDetialById" parameterType="int" resultMap="detailMap">
-		select a.v_id,a.tid,d.tname,v_name,v_pic,v_actor,v_publishyear,v_publisharea,v_addtime,v_director,v_enname,b.body as play,c.body as content from sea_data a , sea_playdata b, sea_content c ,sea_type d where a.v_id = b.v_id  and  b.v_id = c.v_id and  a.tid = d.tid  and a.v_id = #{tid}
+		select a.v_id,
+		a.tid,
+		d.tname,
+		v_name,
+		CASE
+		<![CDATA[ locate( 'http://', v_pic ) ]]>
+		WHEN 0 THEN
+		<![CDATA[ CONCAT( 'host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
+		END as v_pic,
+		v_actor,
+		v_publishyear,
+		v_publisharea,
+		v_addtime,
+		v_director,
+		v_enname,
+		b.body as play,
+		c.body as content
+		from
+		 	sea_data a ,
+		 	sea_playdata b,
+		 	sea_content c ,
+		 	sea_type d
+		where a.v_id = b.v_id
+		and  b.v_id = c.v_id
+		and  a.tid = d.tid
+		and a.v_id = #{tid}
 	</select>
 
 
