@@ -28,7 +28,7 @@
 		CASE
 		<![CDATA[ locate( 'http://', v_pic ) ]]>
 		WHEN 0 THEN
-		<![CDATA[ CONCAT( 'host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
+		<![CDATA[ CONCAT( 'http://host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
 		END as v_pic,
 		v_actor,
 		v_publishyear,
