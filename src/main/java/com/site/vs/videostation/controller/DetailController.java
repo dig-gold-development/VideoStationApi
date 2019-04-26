@@ -23,7 +23,7 @@ public class DetailController {
     public ApiResponse findDetailById(@RequestParam("id") int id ) {
         Detail detail = detailService.findDetialById(id);
         String playContent = detail.getBody();
-        String[]  sourceStringArr = playContent.split("\\$\\$\\$\\$");
+        String[]  sourceStringArr = playContent.split("\\$\\$\\$\\$\\$");
 
 
 
@@ -32,7 +32,10 @@ public class DetailController {
 
         for (String sourceString : sourceStringArr) {
 
-            sourceString = sourceString.replace("$$", "$");
+            if ("".equals(sourceString) ) {
+                continue;
+            }
+            sourceString = sourceString.replace("$$", "");
             List<Movie> movieList = new ArrayList<>();
             Source source = new Source();
            source.setMovieList(movieList);
@@ -42,21 +45,21 @@ public class DetailController {
            for (String episode : episodeArr) {
                String[] unitArr = episode.split("\\$");
                if (source.getSourceName() == null) {
-                   source.setSourceName(unitArr[3]);
+                   source.setSourceName(unitArr[2]);
                }
                Movie movie = new Movie();
                movieList.add(movie);
 
                int index = 0;
                for (String unit :unitArr) {
-                   if (index ==  1) {
+                   if (index ==  0) {
                        movie.setPlayName(unit);
-                   }else if (index == 2) {
+                   }else if (index == 1) {
                        if (unit.endsWith("mp4") || unit.endsWith("m3u8")) {
                            movie.setIsRealUrl(1);
                        }
                        movie.setPlayUrl(unit);
-                   }else  if (index == 3) {
+                   }else  if (index == 2) {
                        movie.setSource(unit);
                    }
                     index++;
