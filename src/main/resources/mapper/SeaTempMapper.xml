@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaTempMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaTemp" >
+    <id column="v_id" property="vId" jdbcType="INTEGER" />
+    <result column="tid" property="tid" jdbcType="SMALLINT" />
+    <result column="v_name" property="vName" jdbcType="CHAR" />
+    <result column="v_state" property="vState" jdbcType="INTEGER" />
+    <result column="v_pic" property="vPic" jdbcType="CHAR" />
+    <result column="v_actor" property="vActor" jdbcType="VARCHAR" />
+    <result column="v_publishyear" property="vPublishyear" jdbcType="CHAR" />
+    <result column="v_publisharea" property="vPublisharea" jdbcType="CHAR" />
+    <result column="v_addtime" property="vAddtime" jdbcType="INTEGER" />
+    <result column="v_note" property="vNote" jdbcType="CHAR" />
+    <result column="v_letter" property="vLetter" jdbcType="CHAR" />
+    <result column="v_director" property="vDirector" jdbcType="VARCHAR" />
+    <result column="v_enname" property="vEnname" jdbcType="VARCHAR" />
+    <result column="v_lang" property="vLang" jdbcType="VARCHAR" />
+    <result column="v_playdata" property="vPlaydata" jdbcType="LONGVARCHAR" />
+    <result column="v_des" property="vDes" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_temp
+    where v_id = #{vId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaTemp" >
+    insert into sea_temp (v_id, tid, v_name, 
+      v_state, v_pic, v_actor, 
+      v_publishyear, v_publisharea, v_addtime, 
+      v_note, v_letter, v_director, 
+      v_enname, v_lang, v_playdata, 
+      v_des)
+    values (#{vId,jdbcType=INTEGER}, #{tid,jdbcType=SMALLINT}, #{vName,jdbcType=CHAR}, 
+      #{vState,jdbcType=INTEGER}, #{vPic,jdbcType=CHAR}, #{vActor,jdbcType=VARCHAR}, 
+      #{vPublishyear,jdbcType=CHAR}, #{vPublisharea,jdbcType=CHAR}, #{vAddtime,jdbcType=INTEGER}, 
+      #{vNote,jdbcType=CHAR}, #{vLetter,jdbcType=CHAR}, #{vDirector,jdbcType=VARCHAR}, 
+      #{vEnname,jdbcType=VARCHAR}, #{vLang,jdbcType=VARCHAR}, #{vPlaydata,jdbcType=LONGVARCHAR}, 
+      #{vDes,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaTemp" >
+    update sea_temp
+    set tid = #{tid,jdbcType=SMALLINT},
+      v_name = #{vName,jdbcType=CHAR},
+      v_state = #{vState,jdbcType=INTEGER},
+      v_pic = #{vPic,jdbcType=CHAR},
+      v_actor = #{vActor,jdbcType=VARCHAR},
+      v_publishyear = #{vPublishyear,jdbcType=CHAR},
+      v_publisharea = #{vPublisharea,jdbcType=CHAR},
+      v_addtime = #{vAddtime,jdbcType=INTEGER},
+      v_note = #{vNote,jdbcType=CHAR},
+      v_letter = #{vLetter,jdbcType=CHAR},
+      v_director = #{vDirector,jdbcType=VARCHAR},
+      v_enname = #{vEnname,jdbcType=VARCHAR},
+      v_lang = #{vLang,jdbcType=VARCHAR},
+      v_playdata = #{vPlaydata,jdbcType=LONGVARCHAR},
+      v_des = #{vDes,jdbcType=LONGVARCHAR}
+    where v_id = #{vId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select v_id, tid, v_name, v_state, v_pic, v_actor, v_publishyear, v_publisharea, 
+    v_addtime, v_note, v_letter, v_director, v_enname, v_lang, v_playdata, v_des
+    from sea_temp
+    where v_id = #{vId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select v_id, tid, v_name, v_state, v_pic, v_actor, v_publishyear, v_publisharea, 
+    v_addtime, v_note, v_letter, v_director, v_enname, v_lang, v_playdata, v_des
+    from sea_temp
+  </select>
+</mapper>

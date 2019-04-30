@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaType" >
+    <id column="tid" property="tid" jdbcType="SMALLINT" />
+    <result column="upid" property="upid" jdbcType="TINYINT" />
+    <result column="tname" property="tname" jdbcType="CHAR" />
+    <result column="tenname" property="tenname" jdbcType="CHAR" />
+    <result column="torder" property="torder" jdbcType="INTEGER" />
+    <result column="templist" property="templist" jdbcType="CHAR" />
+    <result column="templist_1" property="templist1" jdbcType="CHAR" />
+    <result column="templist_2" property="templist2" jdbcType="CHAR" />
+    <result column="title" property="title" jdbcType="CHAR" />
+    <result column="keyword" property="keyword" jdbcType="CHAR" />
+    <result column="description" property="description" jdbcType="CHAR" />
+    <result column="ishidden" property="ishidden" jdbcType="SMALLINT" />
+    <result column="tptype" property="tptype" jdbcType="SMALLINT" />
+    <result column="unionid" property="unionid" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from sea_type
+    where tid = #{tid,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaType" >
+    insert into sea_type (tid, upid, tname, 
+      tenname, torder, templist, 
+      templist_1, templist_2, title, 
+      keyword, description, ishidden, 
+      tptype, unionid)
+    values (#{tid,jdbcType=SMALLINT}, #{upid,jdbcType=TINYINT}, #{tname,jdbcType=CHAR}, 
+      #{tenname,jdbcType=CHAR}, #{torder,jdbcType=INTEGER}, #{templist,jdbcType=CHAR}, 
+      #{templist1,jdbcType=CHAR}, #{templist2,jdbcType=CHAR}, #{title,jdbcType=CHAR}, 
+      #{keyword,jdbcType=CHAR}, #{description,jdbcType=CHAR}, #{ishidden,jdbcType=SMALLINT}, 
+      #{tptype,jdbcType=SMALLINT}, #{unionid,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaType" >
+    update sea_type
+    set upid = #{upid,jdbcType=TINYINT},
+      tname = #{tname,jdbcType=CHAR},
+      tenname = #{tenname,jdbcType=CHAR},
+      torder = #{torder,jdbcType=INTEGER},
+      templist = #{templist,jdbcType=CHAR},
+      templist_1 = #{templist1,jdbcType=CHAR},
+      templist_2 = #{templist2,jdbcType=CHAR},
+      title = #{title,jdbcType=CHAR},
+      keyword = #{keyword,jdbcType=CHAR},
+      description = #{description,jdbcType=CHAR},
+      ishidden = #{ishidden,jdbcType=SMALLINT},
+      tptype = #{tptype,jdbcType=SMALLINT},
+      unionid = #{unionid,jdbcType=LONGVARCHAR}
+    where tid = #{tid,jdbcType=SMALLINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select tid, upid, tname, tenname, torder, templist, templist_1, templist_2, title, 
+    keyword, description, ishidden, tptype, unionid
+    from sea_type
+    where tid = #{tid,jdbcType=SMALLINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select tid, upid, tname, tenname, torder, templist, templist_1, templist_2, title, 
+    keyword, description, ishidden, tptype, unionid
+    from sea_type
+  </select>
+</mapper>

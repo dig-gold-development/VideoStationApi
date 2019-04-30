@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaZykMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaZyk" >
+    <id column="zid" property="zid" jdbcType="INTEGER" />
+    <result column="zname" property="zname" jdbcType="VARCHAR" />
+    <result column="zapi" property="zapi" jdbcType="VARCHAR" />
+    <result column="zinfo" property="zinfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_zyk
+    where zid = #{zid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaZyk" >
+    insert into sea_zyk (zid, zname, zapi, 
+      zinfo)
+    values (#{zid,jdbcType=INTEGER}, #{zname,jdbcType=VARCHAR}, #{zapi,jdbcType=VARCHAR}, 
+      #{zinfo,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaZyk" >
+    update sea_zyk
+    set zname = #{zname,jdbcType=VARCHAR},
+      zapi = #{zapi,jdbcType=VARCHAR},
+      zinfo = #{zinfo,jdbcType=VARCHAR}
+    where zid = #{zid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select zid, zname, zapi, zinfo
+    from sea_zyk
+    where zid = #{zid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select zid, zname, zapi, zinfo
+    from sea_zyk
+  </select>
+</mapper>

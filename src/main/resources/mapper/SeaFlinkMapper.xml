@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaFlinkMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaFlink" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="sortrank" property="sortrank" jdbcType="SMALLINT" />
+    <result column="url" property="url" jdbcType="CHAR" />
+    <result column="webname" property="webname" jdbcType="CHAR" />
+    <result column="msg" property="msg" jdbcType="CHAR" />
+    <result column="email" property="email" jdbcType="CHAR" />
+    <result column="logo" property="logo" jdbcType="CHAR" />
+    <result column="dtime" property="dtime" jdbcType="INTEGER" />
+    <result column="ischeck" property="ischeck" jdbcType="SMALLINT" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from sea_flink
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaFlink" >
+    <selectKey resultType="java.lang.Short" keyProperty="id" order="AFTER" >
+      UUID
+    </selectKey>
+    insert into sea_flink (sortrank, url, webname, 
+      msg, email, logo, dtime, 
+      ischeck)
+    values (#{sortrank,jdbcType=SMALLINT}, #{url,jdbcType=CHAR}, #{webname,jdbcType=CHAR}, 
+      #{msg,jdbcType=CHAR}, #{email,jdbcType=CHAR}, #{logo,jdbcType=CHAR}, #{dtime,jdbcType=INTEGER}, 
+      #{ischeck,jdbcType=SMALLINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaFlink" >
+    update sea_flink
+    set sortrank = #{sortrank,jdbcType=SMALLINT},
+      url = #{url,jdbcType=CHAR},
+      webname = #{webname,jdbcType=CHAR},
+      msg = #{msg,jdbcType=CHAR},
+      email = #{email,jdbcType=CHAR},
+      logo = #{logo,jdbcType=CHAR},
+      dtime = #{dtime,jdbcType=INTEGER},
+      ischeck = #{ischeck,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select id, sortrank, url, webname, msg, email, logo, dtime, ischeck
+    from sea_flink
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, sortrank, url, webname, msg, email, logo, dtime, ischeck
+    from sea_flink
+  </select>
+</mapper>

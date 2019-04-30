@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaPlaydataMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaPlaydata" >
+    <id column="v_id" property="vId" jdbcType="INTEGER" />
+    <result column="tid" property="tid" jdbcType="SMALLINT" />
+    <result column="body" property="body" jdbcType="LONGVARCHAR" />
+    <result column="body1" property="body1" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_playdata
+    where v_id = #{vId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaPlaydata" >
+    insert into sea_playdata (v_id, tid, body, 
+      body1)
+    values (#{vId,jdbcType=INTEGER}, #{tid,jdbcType=SMALLINT}, #{body,jdbcType=LONGVARCHAR}, 
+      #{body1,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaPlaydata" >
+    update sea_playdata
+    set tid = #{tid,jdbcType=SMALLINT},
+      body = #{body,jdbcType=LONGVARCHAR},
+      body1 = #{body1,jdbcType=LONGVARCHAR}
+    where v_id = #{vId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select v_id, tid, body, body1
+    from sea_playdata
+    where v_id = #{vId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select v_id, tid, body, body1
+    from sea_playdata
+  </select>
+</mapper>

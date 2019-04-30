@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaCckMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCck" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ckey" property="ckey" jdbcType="VARCHAR" />
+    <result column="climit" property="climit" jdbcType="INTEGER" />
+    <result column="maketime" property="maketime" jdbcType="TIMESTAMP" />
+    <result column="usetime" property="usetime" jdbcType="TIMESTAMP" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_cck
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCck" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      UUID
+    </selectKey>
+    insert into sea_cck (ckey, climit, maketime, 
+      usetime, uname, status
+      )
+    values (#{ckey,jdbcType=VARCHAR}, #{climit,jdbcType=INTEGER}, #{maketime,jdbcType=TIMESTAMP}, 
+      #{usetime,jdbcType=TIMESTAMP}, #{uname,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCck" >
+    update sea_cck
+    set ckey = #{ckey,jdbcType=VARCHAR},
+      climit = #{climit,jdbcType=INTEGER},
+      maketime = #{maketime,jdbcType=TIMESTAMP},
+      usetime = #{usetime,jdbcType=TIMESTAMP},
+      uname = #{uname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, ckey, climit, maketime, usetime, uname, status
+    from sea_cck
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, ckey, climit, maketime, usetime, uname, status
+    from sea_cck
+  </select>
+</mapper>

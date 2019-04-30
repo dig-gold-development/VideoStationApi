@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaComment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="v_id" property="vId" jdbcType="INTEGER" />
+    <result column="typeid" property="typeid" jdbcType="SMALLINT" />
+    <result column="username" property="username" jdbcType="CHAR" />
+    <result column="ip" property="ip" jdbcType="CHAR" />
+    <result column="ischeck" property="ischeck" jdbcType="SMALLINT" />
+    <result column="dtime" property="dtime" jdbcType="INTEGER" />
+    <result column="m_type" property="mType" jdbcType="INTEGER" />
+    <result column="reply" property="reply" jdbcType="INTEGER" />
+    <result column="agree" property="agree" jdbcType="INTEGER" />
+    <result column="anti" property="anti" jdbcType="INTEGER" />
+    <result column="pic" property="pic" jdbcType="CHAR" />
+    <result column="vote" property="vote" jdbcType="INTEGER" />
+    <result column="msg" property="msg" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaComment" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      UUID
+    </selectKey>
+    insert into sea_comment (uid, v_id, typeid, 
+      username, ip, ischeck, dtime, 
+      m_type, reply, agree, 
+      anti, pic, vote, msg
+      )
+    values (#{uid,jdbcType=INTEGER}, #{vId,jdbcType=INTEGER}, #{typeid,jdbcType=SMALLINT}, 
+      #{username,jdbcType=CHAR}, #{ip,jdbcType=CHAR}, #{ischeck,jdbcType=SMALLINT}, #{dtime,jdbcType=INTEGER}, 
+      #{mType,jdbcType=INTEGER}, #{reply,jdbcType=INTEGER}, #{agree,jdbcType=INTEGER}, 
+      #{anti,jdbcType=INTEGER}, #{pic,jdbcType=CHAR}, #{vote,jdbcType=INTEGER}, #{msg,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaComment" >
+    update sea_comment
+    set uid = #{uid,jdbcType=INTEGER},
+      v_id = #{vId,jdbcType=INTEGER},
+      typeid = #{typeid,jdbcType=SMALLINT},
+      username = #{username,jdbcType=CHAR},
+      ip = #{ip,jdbcType=CHAR},
+      ischeck = #{ischeck,jdbcType=SMALLINT},
+      dtime = #{dtime,jdbcType=INTEGER},
+      m_type = #{mType,jdbcType=INTEGER},
+      reply = #{reply,jdbcType=INTEGER},
+      agree = #{agree,jdbcType=INTEGER},
+      anti = #{anti,jdbcType=INTEGER},
+      pic = #{pic,jdbcType=CHAR},
+      vote = #{vote,jdbcType=INTEGER},
+      msg = #{msg,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, uid, v_id, typeid, username, ip, ischeck, dtime, m_type, reply, agree, 
+    anti, pic, vote, msg
+    from sea_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, uid, v_id, typeid, username, ip, ischeck, dtime, m_type, reply, agree, 
+    anti, pic, vote, msg
+    from sea_comment
+  </select>
+</mapper>

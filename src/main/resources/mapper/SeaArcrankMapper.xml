@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaArcrankMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaArcrank" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="rank" property="rank" jdbcType="SMALLINT" />
+    <result column="membername" property="membername" jdbcType="CHAR" />
+    <result column="adminrank" property="adminrank" jdbcType="SMALLINT" />
+    <result column="money" property="money" jdbcType="SMALLINT" />
+    <result column="scores" property="scores" jdbcType="INTEGER" />
+    <result column="purviews" property="purviews" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from sea_arcrank
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaArcrank" >
+    <selectKey resultType="java.lang.Short" keyProperty="id" order="AFTER" >
+      UUID
+    </selectKey>
+    insert into sea_arcrank (rank, membername, adminrank, 
+      money, scores, purviews
+      )
+    values (#{rank,jdbcType=SMALLINT}, #{membername,jdbcType=CHAR}, #{adminrank,jdbcType=SMALLINT}, 
+      #{money,jdbcType=SMALLINT}, #{scores,jdbcType=INTEGER}, #{purviews,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaArcrank" >
+    update sea_arcrank
+    set rank = #{rank,jdbcType=SMALLINT},
+      membername = #{membername,jdbcType=CHAR},
+      adminrank = #{adminrank,jdbcType=SMALLINT},
+      money = #{money,jdbcType=SMALLINT},
+      scores = #{scores,jdbcType=INTEGER},
+      purviews = #{purviews,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select id, rank, membername, adminrank, money, scores, purviews
+    from sea_arcrank
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, rank, membername, adminrank, money, scores, purviews
+    from sea_arcrank
+  </select>
+</mapper>

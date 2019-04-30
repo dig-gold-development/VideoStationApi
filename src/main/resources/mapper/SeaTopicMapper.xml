@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaTopicMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaTopic" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="enname" property="enname" jdbcType="CHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="template" property="template" jdbcType="CHAR" />
+    <result column="pic" property="pic" jdbcType="CHAR" />
+    <result column="des" property="des" jdbcType="LONGVARCHAR" />
+    <result column="vod" property="vod" jdbcType="LONGVARCHAR" />
+    <result column="keyword" property="keyword" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from sea_topic
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaTopic" >
+    <selectKey resultType="java.lang.Short" keyProperty="id" order="AFTER" >
+      UUID
+    </selectKey>
+    insert into sea_topic (name, enname, sort, 
+      template, pic, des, vod, 
+      keyword)
+    values (#{name,jdbcType=CHAR}, #{enname,jdbcType=CHAR}, #{sort,jdbcType=INTEGER}, 
+      #{template,jdbcType=CHAR}, #{pic,jdbcType=CHAR}, #{des,jdbcType=LONGVARCHAR}, #{vod,jdbcType=LONGVARCHAR}, 
+      #{keyword,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaTopic" >
+    update sea_topic
+    set name = #{name,jdbcType=CHAR},
+      enname = #{enname,jdbcType=CHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      template = #{template,jdbcType=CHAR},
+      pic = #{pic,jdbcType=CHAR},
+      des = #{des,jdbcType=LONGVARCHAR},
+      vod = #{vod,jdbcType=LONGVARCHAR},
+      keyword = #{keyword,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select id, name, enname, sort, template, pic, des, vod, keyword
+    from sea_topic
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name, enname, sort, template, pic, des, vod, keyword
+    from sea_topic
+  </select>
+</mapper>

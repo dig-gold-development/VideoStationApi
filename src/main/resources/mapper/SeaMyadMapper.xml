@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaMyadMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaMyad" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="adname" property="adname" jdbcType="VARCHAR" />
+    <result column="adenname" property="adenname" jdbcType="VARCHAR" />
+    <result column="timeset" property="timeset" jdbcType="INTEGER" />
+    <result column="intro" property="intro" jdbcType="CHAR" />
+    <result column="adsbody" property="adsbody" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_myad
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaMyad" >
+    insert into sea_myad (aid, adname, adenname, 
+      timeset, intro, adsbody
+      )
+    values (#{aid,jdbcType=INTEGER}, #{adname,jdbcType=VARCHAR}, #{adenname,jdbcType=VARCHAR}, 
+      #{timeset,jdbcType=INTEGER}, #{intro,jdbcType=CHAR}, #{adsbody,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaMyad" >
+    update sea_myad
+    set adname = #{adname,jdbcType=VARCHAR},
+      adenname = #{adenname,jdbcType=VARCHAR},
+      timeset = #{timeset,jdbcType=INTEGER},
+      intro = #{intro,jdbcType=CHAR},
+      adsbody = #{adsbody,jdbcType=LONGVARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select aid, adname, adenname, timeset, intro, adsbody
+    from sea_myad
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select aid, adname, adenname, timeset, intro, adsbody
+    from sea_myad
+  </select>
+</mapper>

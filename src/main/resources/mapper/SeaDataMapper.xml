@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaDataMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaData" >
+    <id column="v_id" property="vId" jdbcType="INTEGER" />
+    <result column="tid" property="tid" jdbcType="SMALLINT" />
+    <result column="v_name" property="vName" jdbcType="CHAR" />
+    <result column="v_state" property="vState" jdbcType="INTEGER" />
+    <result column="v_pic" property="vPic" jdbcType="CHAR" />
+    <result column="v_spic" property="vSpic" jdbcType="CHAR" />
+    <result column="v_gpic" property="vGpic" jdbcType="CHAR" />
+    <result column="v_hit" property="vHit" jdbcType="INTEGER" />
+    <result column="v_money" property="vMoney" jdbcType="SMALLINT" />
+    <result column="v_rank" property="vRank" jdbcType="SMALLINT" />
+    <result column="v_digg" property="vDigg" jdbcType="SMALLINT" />
+    <result column="v_tread" property="vTread" jdbcType="SMALLINT" />
+    <result column="v_commend" property="vCommend" jdbcType="SMALLINT" />
+    <result column="v_wrong" property="vWrong" jdbcType="SMALLINT" />
+    <result column="v_ismake" property="vIsmake" jdbcType="SMALLINT" />
+    <result column="v_actor" property="vActor" jdbcType="VARCHAR" />
+    <result column="v_color" property="vColor" jdbcType="CHAR" />
+    <result column="v_publishyear" property="vPublishyear" jdbcType="INTEGER" />
+    <result column="v_publisharea" property="vPublisharea" jdbcType="CHAR" />
+    <result column="v_addtime" property="vAddtime" jdbcType="INTEGER" />
+    <result column="v_topic" property="vTopic" jdbcType="INTEGER" />
+    <result column="v_note" property="vNote" jdbcType="CHAR" />
+    <result column="v_tags" property="vTags" jdbcType="CHAR" />
+    <result column="v_letter" property="vLetter" jdbcType="CHAR" />
+    <result column="v_isunion" property="vIsunion" jdbcType="SMALLINT" />
+    <result column="v_recycled" property="vRecycled" jdbcType="SMALLINT" />
+    <result column="v_director" property="vDirector" jdbcType="VARCHAR" />
+    <result column="v_enname" property="vEnname" jdbcType="VARCHAR" />
+    <result column="v_lang" property="vLang" jdbcType="VARCHAR" />
+    <result column="v_score" property="vScore" jdbcType="INTEGER" />
+    <result column="v_scorenum" property="vScorenum" jdbcType="INTEGER" />
+    <result column="v_nickname" property="vNickname" jdbcType="CHAR" />
+    <result column="v_reweek" property="vReweek" jdbcType="CHAR" />
+    <result column="v_douban" property="vDouban" jdbcType="REAL" />
+    <result column="v_mtime" property="vMtime" jdbcType="REAL" />
+    <result column="v_imdb" property="vImdb" jdbcType="REAL" />
+    <result column="v_tvs" property="vTvs" jdbcType="CHAR" />
+    <result column="v_company" property="vCompany" jdbcType="CHAR" />
+    <result column="v_dayhit" property="vDayhit" jdbcType="INTEGER" />
+    <result column="v_weekhit" property="vWeekhit" jdbcType="INTEGER" />
+    <result column="v_monthhit" property="vMonthhit" jdbcType="INTEGER" />
+    <result column="v_daytime" property="vDaytime" jdbcType="INTEGER" />
+    <result column="v_weektime" property="vWeektime" jdbcType="INTEGER" />
+    <result column="v_monthtime" property="vMonthtime" jdbcType="INTEGER" />
+    <result column="v_len" property="vLen" jdbcType="VARCHAR" />
+    <result column="v_total" property="vTotal" jdbcType="VARCHAR" />
+    <result column="v_ver" property="vVer" jdbcType="VARCHAR" />
+    <result column="v_psd" property="vPsd" jdbcType="VARCHAR" />
+    <result column="v_extratype" property="vExtratype" jdbcType="LONGVARCHAR" />
+    <result column="v_jq" property="vJq" jdbcType="LONGVARCHAR" />
+    <result column="v_longtxt" property="vLongtxt" jdbcType="LONGVARCHAR" />
+
+    <result column="tname" property="tName" ></result>
+    <result column="play" property="body" ></result>
+    <result column="content" property="content" ></result>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_data
+    where v_id = #{vId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaData" >
+    insert into sea_data (v_id, tid, v_name,
+      v_state, v_pic, v_spic, v_gpic,
+      v_hit, v_money, v_rank,
+      v_digg, v_tread, v_commend,
+      v_wrong, v_ismake, v_actor,
+      v_color, v_publishyear, v_publisharea,
+      v_addtime, v_topic, v_note,
+      v_tags, v_letter, v_isunion,
+      v_recycled, v_director, v_enname,
+      v_lang, v_score, v_scorenum,
+      v_nickname, v_reweek, v_douban,
+      v_mtime, v_imdb, v_tvs, v_company,
+      v_dayhit, v_weekhit, v_monthhit,
+      v_daytime, v_weektime, v_monthtime,
+      v_len, v_total, v_ver,
+      v_psd, v_extratype, v_jq,
+      v_longtxt)
+    values (#{vId,jdbcType=INTEGER}, #{tid,jdbcType=SMALLINT}, #{vName,jdbcType=CHAR},
+      #{vState,jdbcType=INTEGER}, #{vPic,jdbcType=CHAR}, #{vSpic,jdbcType=CHAR}, #{vGpic,jdbcType=CHAR},
+      #{vHit,jdbcType=INTEGER}, #{vMoney,jdbcType=SMALLINT}, #{vRank,jdbcType=SMALLINT},
+      #{vDigg,jdbcType=SMALLINT}, #{vTread,jdbcType=SMALLINT}, #{vCommend,jdbcType=SMALLINT},
+      #{vWrong,jdbcType=SMALLINT}, #{vIsmake,jdbcType=SMALLINT}, #{vActor,jdbcType=VARCHAR},
+      #{vColor,jdbcType=CHAR}, #{vPublishyear,jdbcType=INTEGER}, #{vPublisharea,jdbcType=CHAR},
+      #{vAddtime,jdbcType=INTEGER}, #{vTopic,jdbcType=INTEGER}, #{vNote,jdbcType=CHAR},
+      #{vTags,jdbcType=CHAR}, #{vLetter,jdbcType=CHAR}, #{vIsunion,jdbcType=SMALLINT},
+      #{vRecycled,jdbcType=SMALLINT}, #{vDirector,jdbcType=VARCHAR}, #{vEnname,jdbcType=VARCHAR},
+      #{vLang,jdbcType=VARCHAR}, #{vScore,jdbcType=INTEGER}, #{vScorenum,jdbcType=INTEGER},
+      #{vNickname,jdbcType=CHAR}, #{vReweek,jdbcType=CHAR}, #{vDouban,jdbcType=REAL},
+      #{vMtime,jdbcType=REAL}, #{vImdb,jdbcType=REAL}, #{vTvs,jdbcType=CHAR}, #{vCompany,jdbcType=CHAR},
+      #{vDayhit,jdbcType=INTEGER}, #{vWeekhit,jdbcType=INTEGER}, #{vMonthhit,jdbcType=INTEGER},
+      #{vDaytime,jdbcType=INTEGER}, #{vWeektime,jdbcType=INTEGER}, #{vMonthtime,jdbcType=INTEGER},
+      #{vLen,jdbcType=VARCHAR}, #{vTotal,jdbcType=VARCHAR}, #{vVer,jdbcType=VARCHAR},
+      #{vPsd,jdbcType=VARCHAR}, #{vExtratype,jdbcType=LONGVARCHAR}, #{vJq,jdbcType=LONGVARCHAR},
+      #{vLongtxt,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaData" >
+    update sea_data
+    set tid = #{tid,jdbcType=SMALLINT},
+      v_name = #{vName,jdbcType=CHAR},
+      v_state = #{vState,jdbcType=INTEGER},
+      v_pic = #{vPic,jdbcType=CHAR},
+      v_spic = #{vSpic,jdbcType=CHAR},
+      v_gpic = #{vGpic,jdbcType=CHAR},
+      v_hit = #{vHit,jdbcType=INTEGER},
+      v_money = #{vMoney,jdbcType=SMALLINT},
+      v_rank = #{vRank,jdbcType=SMALLINT},
+      v_digg = #{vDigg,jdbcType=SMALLINT},
+      v_tread = #{vTread,jdbcType=SMALLINT},
+      v_commend = #{vCommend,jdbcType=SMALLINT},
+      v_wrong = #{vWrong,jdbcType=SMALLINT},
+      v_ismake = #{vIsmake,jdbcType=SMALLINT},
+      v_actor = #{vActor,jdbcType=VARCHAR},
+      v_color = #{vColor,jdbcType=CHAR},
+      v_publishyear = #{vPublishyear,jdbcType=INTEGER},
+      v_publisharea = #{vPublisharea,jdbcType=CHAR},
+      v_addtime = #{vAddtime,jdbcType=INTEGER},
+      v_topic = #{vTopic,jdbcType=INTEGER},
+      v_note = #{vNote,jdbcType=CHAR},
+      v_tags = #{vTags,jdbcType=CHAR},
+      v_letter = #{vLetter,jdbcType=CHAR},
+      v_isunion = #{vIsunion,jdbcType=SMALLINT},
+      v_recycled = #{vRecycled,jdbcType=SMALLINT},
+      v_director = #{vDirector,jdbcType=VARCHAR},
+      v_enname = #{vEnname,jdbcType=VARCHAR},
+      v_lang = #{vLang,jdbcType=VARCHAR},
+      v_score = #{vScore,jdbcType=INTEGER},
+      v_scorenum = #{vScorenum,jdbcType=INTEGER},
+      v_nickname = #{vNickname,jdbcType=CHAR},
+      v_reweek = #{vReweek,jdbcType=CHAR},
+      v_douban = #{vDouban,jdbcType=REAL},
+      v_mtime = #{vMtime,jdbcType=REAL},
+      v_imdb = #{vImdb,jdbcType=REAL},
+      v_tvs = #{vTvs,jdbcType=CHAR},
+      v_company = #{vCompany,jdbcType=CHAR},
+      v_dayhit = #{vDayhit,jdbcType=INTEGER},
+      v_weekhit = #{vWeekhit,jdbcType=INTEGER},
+      v_monthhit = #{vMonthhit,jdbcType=INTEGER},
+      v_daytime = #{vDaytime,jdbcType=INTEGER},
+      v_weektime = #{vWeektime,jdbcType=INTEGER},
+      v_monthtime = #{vMonthtime,jdbcType=INTEGER},
+      v_len = #{vLen,jdbcType=VARCHAR},
+      v_total = #{vTotal,jdbcType=VARCHAR},
+      v_ver = #{vVer,jdbcType=VARCHAR},
+      v_psd = #{vPsd,jdbcType=VARCHAR},
+      v_extratype = #{vExtratype,jdbcType=LONGVARCHAR},
+      v_jq = #{vJq,jdbcType=LONGVARCHAR},
+      v_longtxt = #{vLongtxt,jdbcType=LONGVARCHAR}
+    where v_id = #{vId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select v_id, tid, v_name, v_state, v_pic, v_spic, v_gpic, v_hit, v_money, v_rank,
+    v_digg, v_tread, v_commend, v_wrong, v_ismake, v_actor, v_color, v_publishyear, v_publisharea,
+    v_addtime, v_topic, v_note, v_tags, v_letter, v_isunion, v_recycled, v_director,
+    v_enname, v_lang, v_score, v_scorenum, v_nickname, v_reweek, v_douban, v_mtime, v_imdb,
+    v_tvs, v_company, v_dayhit, v_weekhit, v_monthhit, v_daytime, v_weektime, v_monthtime,
+    v_len, v_total, v_ver, v_psd, v_extratype, v_jq, v_longtxt
+    from sea_data
+    where v_id = #{vId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select v_id, tid, v_name, v_state, v_pic, v_spic, v_gpic, v_hit, v_money, v_rank,
+    v_digg, v_tread, v_commend, v_wrong, v_ismake, v_actor, v_color, v_publishyear, v_publisharea,
+    v_addtime, v_topic, v_note, v_tags, v_letter, v_isunion, v_recycled, v_director,
+    v_enname, v_lang, v_score, v_scorenum, v_nickname, v_reweek, v_douban, v_mtime, v_imdb,
+    v_tvs, v_company, v_dayhit, v_weekhit, v_monthhit, v_daytime, v_weektime, v_monthtime,
+    v_len, v_total, v_ver, v_psd, v_extratype, v_jq, v_longtxt
+    from sea_data
+  </select>
+
+  <select id="findDetialById" parameterType="int" resultMap="BaseResultMap">
+		select a.v_id,
+		a.tid,
+		d.tname,
+		v_name,
+		CASE
+		<![CDATA[ locate( 'http://', v_pic ) ]]>
+		WHEN 0 THEN
+		<![CDATA[ CONCAT( 'http://host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
+		END as v_pic,
+		v_actor,
+		v_publishyear,
+		v_publisharea,
+		v_addtime,
+		v_director,
+		v_enname,
+		b.body as play,
+		c.body as content
+		from
+		 	sea_data a ,
+		 	sea_playdata b,
+		 	sea_content c ,
+		 	sea_type d
+		where a.v_id = b.v_id
+		and  b.v_id = c.v_id
+		and  a.tid = d.tid
+		and a.v_id = #{tid}
+	</select>
+
+
+</mapper>

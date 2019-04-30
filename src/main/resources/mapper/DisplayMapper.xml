@@ -45,4 +45,16 @@
 		</foreach>
 	</select>
 
+	<select id="findDisplayDataCountInfoByTypeIds" resultType="Display">
+		select v_name,
+		count(1)
+		from
+		sea_data
+		where  tid in
+		<foreach collection="list" item="tid" separator="," open="(" close=")">
+			#{tid}
+		</foreach>
+	</select>
+
+
 </mapper>

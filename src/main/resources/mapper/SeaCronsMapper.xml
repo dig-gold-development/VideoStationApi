@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaCronsMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCrons" >
+    <id column="cronid" property="cronid" jdbcType="SMALLINT" />
+    <result column="available" property="available" jdbcType="BIT" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="filename" property="filename" jdbcType="CHAR" />
+    <result column="lastrun" property="lastrun" jdbcType="INTEGER" />
+    <result column="nextrun" property="nextrun" jdbcType="INTEGER" />
+    <result column="weekday" property="weekday" jdbcType="BIT" />
+    <result column="day" property="day" jdbcType="TINYINT" />
+    <result column="hour" property="hour" jdbcType="TINYINT" />
+    <result column="minute" property="minute" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from sea_crons
+    where cronid = #{cronid,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCrons" >
+    insert into sea_crons (cronid, available, type, 
+      name, filename, lastrun, 
+      nextrun, weekday, day, 
+      hour, minute)
+    values (#{cronid,jdbcType=SMALLINT}, #{available,jdbcType=BIT}, #{type,jdbcType=CHAR}, 
+      #{name,jdbcType=CHAR}, #{filename,jdbcType=CHAR}, #{lastrun,jdbcType=INTEGER}, 
+      #{nextrun,jdbcType=INTEGER}, #{weekday,jdbcType=BIT}, #{day,jdbcType=TINYINT}, 
+      #{hour,jdbcType=TINYINT}, #{minute,jdbcType=CHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCrons" >
+    update sea_crons
+    set available = #{available,jdbcType=BIT},
+      type = #{type,jdbcType=CHAR},
+      name = #{name,jdbcType=CHAR},
+      filename = #{filename,jdbcType=CHAR},
+      lastrun = #{lastrun,jdbcType=INTEGER},
+      nextrun = #{nextrun,jdbcType=INTEGER},
+      weekday = #{weekday,jdbcType=BIT},
+      day = #{day,jdbcType=TINYINT},
+      hour = #{hour,jdbcType=TINYINT},
+      minute = #{minute,jdbcType=CHAR}
+    where cronid = #{cronid,jdbcType=SMALLINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select cronid, available, type, name, filename, lastrun, nextrun, weekday, day, hour, 
+    minute
+    from sea_crons
+    where cronid = #{cronid,jdbcType=SMALLINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select cronid, available, type, name, filename, lastrun, nextrun, weekday, day, hour, 
+    minute
+    from sea_crons
+  </select>
+</mapper>

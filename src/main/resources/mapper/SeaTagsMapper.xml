@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaTagsMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaTags" >
+    <id column="tagid" property="tagid" jdbcType="INTEGER" />
+    <result column="tag" property="tag" jdbcType="CHAR" />
+    <result column="usenum" property="usenum" jdbcType="INTEGER" />
+    <result column="vids" property="vids" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_tags
+    where tagid = #{tagid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaTags" >
+    insert into sea_tags (tagid, tag, usenum, 
+      vids)
+    values (#{tagid,jdbcType=INTEGER}, #{tag,jdbcType=CHAR}, #{usenum,jdbcType=INTEGER}, 
+      #{vids,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaTags" >
+    update sea_tags
+    set tag = #{tag,jdbcType=CHAR},
+      usenum = #{usenum,jdbcType=INTEGER},
+      vids = #{vids,jdbcType=LONGVARCHAR}
+    where tagid = #{tagid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select tagid, tag, usenum, vids
+    from sea_tags
+    where tagid = #{tagid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select tagid, tag, usenum, vids
+    from sea_tags
+  </select>
+</mapper>

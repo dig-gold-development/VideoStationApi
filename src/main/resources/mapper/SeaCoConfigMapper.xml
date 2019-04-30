@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SeaCoConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoConfig" >
+    <id column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="cname" property="cname" jdbcType="VARCHAR" />
+    <result column="getlistnum" property="getlistnum" jdbcType="INTEGER" />
+    <result column="getconnum" property="getconnum" jdbcType="INTEGER" />
+    <result column="cotype" property="cotype" jdbcType="TINYINT" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sea_co_config
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCoConfig" >
+    insert into sea_co_config (cid, cname, getlistnum, 
+      getconnum, cotype)
+    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{getlistnum,jdbcType=INTEGER}, 
+      #{getconnum,jdbcType=INTEGER}, #{cotype,jdbcType=TINYINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCoConfig" >
+    update sea_co_config
+    set cname = #{cname,jdbcType=VARCHAR},
+      getlistnum = #{getlistnum,jdbcType=INTEGER},
+      getconnum = #{getconnum,jdbcType=INTEGER},
+      cotype = #{cotype,jdbcType=TINYINT}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select cid, cname, getlistnum, getconnum, cotype
+    from sea_co_config
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select cid, cname, getlistnum, getconnum, cotype
+    from sea_co_config
+  </select>
+</mapper>
