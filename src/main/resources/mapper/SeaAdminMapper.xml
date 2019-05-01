@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.site.vs.videostation.mapper.SeaAdminMapper" >
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaAdmin" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="logincount" property="logincount" jdbcType="SMALLINT" />
-    <result column="loginip" property="loginip" jdbcType="VARCHAR" />
-    <result column="logintime" property="logintime" jdbcType="INTEGER" />
-    <result column="groupid" property="groupid" jdbcType="SMALLINT" />
-    <result column="state" property="state" jdbcType="SMALLINT" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.vs.videostation.mapper.SeaAdminMapper">
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaAdmin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="logincount" jdbcType="SMALLINT" property="logincount" />
+    <result column="loginip" jdbcType="VARCHAR" property="loginip" />
+    <result column="logintime" jdbcType="INTEGER" property="logintime" />
+    <result column="groupid" jdbcType="SMALLINT" property="groupid" />
+    <result column="state" jdbcType="SMALLINT" property="state" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sea_admin
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaAdmin" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaAdmin">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       UUID
     </selectKey>
     insert into sea_admin (name, password, logincount, 
@@ -26,7 +26,7 @@
       #{loginip,jdbcType=VARCHAR}, #{logintime,jdbcType=INTEGER}, #{groupid,jdbcType=SMALLINT}, 
       #{state,jdbcType=SMALLINT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaAdmin" >
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaAdmin">
     update sea_admin
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -37,12 +37,57 @@
       state = #{state,jdbcType=SMALLINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, name, password, logincount, loginip, logintime, groupid, state
     from sea_admin
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, password, logincount, loginip, logintime, groupid, state
+    from sea_admin
+  </select>
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaAdmin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="logincount" jdbcType="SMALLINT" property="logincount" />
+    <result column="loginip" jdbcType="VARCHAR" property="loginip" />
+    <result column="logintime" jdbcType="INTEGER" property="logintime" />
+    <result column="groupid" jdbcType="SMALLINT" property="groupid" />
+    <result column="state" jdbcType="SMALLINT" property="state" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sea_admin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaAdmin">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      UUID
+    </selectKey>
+    insert into sea_admin (name, password, logincount, 
+      loginip, logintime, groupid, 
+      state)
+    values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{logincount,jdbcType=SMALLINT}, 
+      #{loginip,jdbcType=VARCHAR}, #{logintime,jdbcType=INTEGER}, #{groupid,jdbcType=SMALLINT}, 
+      #{state,jdbcType=SMALLINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaAdmin">
+    update sea_admin
+    set name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      logincount = #{logincount,jdbcType=SMALLINT},
+      loginip = #{loginip,jdbcType=VARCHAR},
+      logintime = #{logintime,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=SMALLINT},
+      state = #{state,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, password, logincount, loginip, logintime, groupid, state
+    from sea_admin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
     select id, name, password, logincount, loginip, logintime, groupid, state
     from sea_admin
   </select>

@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.site.vs.videostation.mapper.SeaCoUrlMapper" >
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoUrl" >
-    <id column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="cid" property="cid" jdbcType="SMALLINT" />
-    <result column="tid" property="tid" jdbcType="SMALLINT" />
-    <result column="url" property="url" jdbcType="CHAR" />
-    <result column="pic" property="pic" jdbcType="CHAR" />
-    <result column="succ" property="succ" jdbcType="CHAR" />
-    <result column="err" property="err" jdbcType="INTEGER" />
-    <result column="cotype" property="cotype" jdbcType="TINYINT" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.vs.videostation.mapper.SeaCoUrlMapper">
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoUrl">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="cid" jdbcType="SMALLINT" property="cid" />
+    <result column="tid" jdbcType="SMALLINT" property="tid" />
+    <result column="url" jdbcType="CHAR" property="url" />
+    <result column="pic" jdbcType="CHAR" property="pic" />
+    <result column="succ" jdbcType="CHAR" property="succ" />
+    <result column="err" jdbcType="INTEGER" property="err" />
+    <result column="cotype" jdbcType="TINYINT" property="cotype" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sea_co_url
     where uid = #{uid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCoUrl" >
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCoUrl">
     insert into sea_co_url (uid, cid, tid, 
       url, pic, succ, err, 
       cotype)
@@ -23,7 +23,7 @@
       #{url,jdbcType=CHAR}, #{pic,jdbcType=CHAR}, #{succ,jdbcType=CHAR}, #{err,jdbcType=INTEGER}, 
       #{cotype,jdbcType=TINYINT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCoUrl" >
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCoUrl">
     update sea_co_url
     set cid = #{cid,jdbcType=SMALLINT},
       tid = #{tid,jdbcType=SMALLINT},
@@ -34,12 +34,54 @@
       cotype = #{cotype,jdbcType=TINYINT}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select uid, cid, tid, url, pic, succ, err, cotype
     from sea_co_url
     where uid = #{uid,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
+    select uid, cid, tid, url, pic, succ, err, cotype
+    from sea_co_url
+  </select>
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoUrl">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="cid" jdbcType="SMALLINT" property="cid" />
+    <result column="tid" jdbcType="SMALLINT" property="tid" />
+    <result column="url" jdbcType="CHAR" property="url" />
+    <result column="pic" jdbcType="CHAR" property="pic" />
+    <result column="succ" jdbcType="CHAR" property="succ" />
+    <result column="err" jdbcType="INTEGER" property="err" />
+    <result column="cotype" jdbcType="TINYINT" property="cotype" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sea_co_url
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCoUrl">
+    insert into sea_co_url (uid, cid, tid, 
+      url, pic, succ, err, 
+      cotype)
+    values (#{uid,jdbcType=INTEGER}, #{cid,jdbcType=SMALLINT}, #{tid,jdbcType=SMALLINT}, 
+      #{url,jdbcType=CHAR}, #{pic,jdbcType=CHAR}, #{succ,jdbcType=CHAR}, #{err,jdbcType=INTEGER}, 
+      #{cotype,jdbcType=TINYINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCoUrl">
+    update sea_co_url
+    set cid = #{cid,jdbcType=SMALLINT},
+      tid = #{tid,jdbcType=SMALLINT},
+      url = #{url,jdbcType=CHAR},
+      pic = #{pic,jdbcType=CHAR},
+      succ = #{succ,jdbcType=CHAR},
+      err = #{err,jdbcType=INTEGER},
+      cotype = #{cotype,jdbcType=TINYINT}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select uid, cid, tid, url, pic, succ, err, cotype
+    from sea_co_url
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
     select uid, cid, tid, url, pic, succ, err, cotype
     from sea_co_url
   </select>

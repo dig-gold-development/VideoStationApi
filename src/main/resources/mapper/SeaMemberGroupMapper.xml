@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.site.vs.videostation.mapper.SeaMemberGroupMapper" >
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaMemberGroup" >
-    <id column="gid" property="gid" jdbcType="INTEGER" />
-    <result column="gname" property="gname" jdbcType="VARCHAR" />
-    <result column="gtype" property="gtype" jdbcType="VARCHAR" />
-    <result column="g_auth" property="gAuth" jdbcType="VARCHAR" />
-    <result column="g_upgrade" property="gUpgrade" jdbcType="INTEGER" />
-    <result column="g_authvalue" property="gAuthvalue" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.vs.videostation.mapper.SeaMemberGroupMapper">
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaMemberGroup">
+    <id column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="gname" jdbcType="VARCHAR" property="gname" />
+    <result column="gtype" jdbcType="VARCHAR" property="gtype" />
+    <result column="g_auth" jdbcType="VARCHAR" property="gAuth" />
+    <result column="g_upgrade" jdbcType="INTEGER" property="gUpgrade" />
+    <result column="g_authvalue" jdbcType="INTEGER" property="gAuthvalue" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sea_member_group
     where gid = #{gid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaMemberGroup" >
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaMemberGroup">
     insert into sea_member_group (gid, gname, gtype, 
       g_auth, g_upgrade, g_authvalue
       )
@@ -21,7 +21,7 @@
       #{gAuth,jdbcType=VARCHAR}, #{gUpgrade,jdbcType=INTEGER}, #{gAuthvalue,jdbcType=INTEGER}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaMemberGroup" >
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaMemberGroup">
     update sea_member_group
     set gname = #{gname,jdbcType=VARCHAR},
       gtype = #{gtype,jdbcType=VARCHAR},
@@ -30,12 +30,50 @@
       g_authvalue = #{gAuthvalue,jdbcType=INTEGER}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select gid, gname, gtype, g_auth, g_upgrade, g_authvalue
     from sea_member_group
     where gid = #{gid,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
+    select gid, gname, gtype, g_auth, g_upgrade, g_authvalue
+    from sea_member_group
+  </select>
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaMemberGroup">
+    <id column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="gname" jdbcType="VARCHAR" property="gname" />
+    <result column="gtype" jdbcType="VARCHAR" property="gtype" />
+    <result column="g_auth" jdbcType="VARCHAR" property="gAuth" />
+    <result column="g_upgrade" jdbcType="INTEGER" property="gUpgrade" />
+    <result column="g_authvalue" jdbcType="INTEGER" property="gAuthvalue" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sea_member_group
+    where gid = #{gid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaMemberGroup">
+    insert into sea_member_group (gid, gname, gtype, 
+      g_auth, g_upgrade, g_authvalue
+      )
+    values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{gtype,jdbcType=VARCHAR}, 
+      #{gAuth,jdbcType=VARCHAR}, #{gUpgrade,jdbcType=INTEGER}, #{gAuthvalue,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaMemberGroup">
+    update sea_member_group
+    set gname = #{gname,jdbcType=VARCHAR},
+      gtype = #{gtype,jdbcType=VARCHAR},
+      g_auth = #{gAuth,jdbcType=VARCHAR},
+      g_upgrade = #{gUpgrade,jdbcType=INTEGER},
+      g_authvalue = #{gAuthvalue,jdbcType=INTEGER}
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select gid, gname, gtype, g_auth, g_upgrade, g_authvalue
+    from sea_member_group
+    where gid = #{gid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
     select gid, gname, gtype, g_auth, g_upgrade, g_authvalue
     from sea_member_group
   </select>

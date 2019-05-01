@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.site.vs.videostation.mapper.SeaErraddMapper" >
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaErradd" >
-    <result column="id" property="id" jdbcType="INTEGER" />
-    <result column="vid" property="vid" jdbcType="INTEGER" />
-    <result column="author" property="author" jdbcType="CHAR" />
-    <result column="ip" property="ip" jdbcType="CHAR" />
-    <result column="sendtime" property="sendtime" jdbcType="INTEGER" />
-    <result column="errtxt" property="errtxt" jdbcType="LONGVARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.vs.videostation.mapper.SeaErraddMapper">
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaErradd">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="vid" jdbcType="INTEGER" property="vid" />
+    <result column="author" jdbcType="CHAR" property="author" />
+    <result column="ip" jdbcType="CHAR" property="ip" />
+    <result column="sendtime" jdbcType="INTEGER" property="sendtime" />
+    <result column="errtxt" jdbcType="LONGVARCHAR" property="errtxt" />
   </resultMap>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaErradd" >
-    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaErradd">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       UUID
     </selectKey>
     insert into sea_erradd (vid, author, ip, sendtime, 
@@ -18,7 +18,28 @@
     values (#{vid,jdbcType=INTEGER}, #{author,jdbcType=CHAR}, #{ip,jdbcType=CHAR}, #{sendtime,jdbcType=INTEGER}, 
       #{errtxt,jdbcType=LONGVARCHAR})
   </insert>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, vid, author, ip, sendtime, errtxt
+    from sea_erradd
+  </select>
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaErradd">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="vid" jdbcType="INTEGER" property="vid" />
+    <result column="author" jdbcType="CHAR" property="author" />
+    <result column="ip" jdbcType="CHAR" property="ip" />
+    <result column="sendtime" jdbcType="INTEGER" property="sendtime" />
+    <result column="errtxt" jdbcType="LONGVARCHAR" property="errtxt" />
+  </resultMap>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaErradd">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      UUID
+    </selectKey>
+    insert into sea_erradd (vid, author, ip, sendtime, 
+      errtxt)
+    values (#{vid,jdbcType=INTEGER}, #{author,jdbcType=CHAR}, #{ip,jdbcType=CHAR}, #{sendtime,jdbcType=INTEGER}, 
+      #{errtxt,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
     select id, vid, author, ip, sendtime, errtxt
     from sea_erradd
   </select>

@@ -2,9 +2,9 @@ package com.site.vs.videostation.service;
 
 import com.github.pagehelper.PageInfo;
 import com.site.vs.videostation.dao.DisplayDao;
-import com.site.vs.videostation.entity.Category;
-import com.site.vs.videostation.entity.Display;
-import com.site.vs.videostation.mapper.CategoryMapper;
+import com.site.vs.videostation.entity.SeaData;
+import com.site.vs.videostation.entity.SeaType;
+import com.site.vs.videostation.mapper.SeaTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,18 +18,18 @@ public class RankService {
     DisplayDao displayDao;
 
     @Autowired
-    CategoryMapper categoryMapper;
+    SeaTypeMapper categoryMapper;
 
-    public List<Display> findRankByTopId(int id, int page) {
+    public List<SeaData> findRankByTopId(int id, int page) {
 
 
-            List<Integer>  ids = new ArrayList<>();
+            List<Short>  ids = new ArrayList<>();
             //电影
-            List<Category> categoryList = categoryMapper.getAll(id);
+            List<SeaType> categoryList = categoryMapper.getAll(id);
 
-            for (Category c: categoryList) {
-                List<Category> childs = c.getCategoryList();
-                for (Category c1 : childs) {
+            for (SeaType c: categoryList) {
+                List<SeaType> childs = c.getCategoryList();
+                for (SeaType c1 : childs) {
 
                     ids.add(c1.getTid());
                 }

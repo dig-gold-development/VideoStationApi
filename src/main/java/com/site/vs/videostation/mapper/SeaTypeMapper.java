@@ -13,4 +13,6 @@ public interface SeaTypeMapper {
     List<SeaType> selectAll();
 
     int updateByPrimaryKey(SeaType record);
+
+    List<SeaType>  getAll( int categoryId);
 }

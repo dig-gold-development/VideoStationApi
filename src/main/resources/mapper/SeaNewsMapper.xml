@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.site.vs.videostation.mapper.SeaNewsMapper" >
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaNews" >
-    <id column="n_id" property="nId" jdbcType="INTEGER" />
-    <result column="tid" property="tid" jdbcType="SMALLINT" />
-    <result column="n_title" property="nTitle" jdbcType="CHAR" />
-    <result column="n_pic" property="nPic" jdbcType="CHAR" />
-    <result column="n_hit" property="nHit" jdbcType="INTEGER" />
-    <result column="n_money" property="nMoney" jdbcType="SMALLINT" />
-    <result column="n_rank" property="nRank" jdbcType="SMALLINT" />
-    <result column="n_digg" property="nDigg" jdbcType="SMALLINT" />
-    <result column="n_tread" property="nTread" jdbcType="SMALLINT" />
-    <result column="n_commend" property="nCommend" jdbcType="SMALLINT" />
-    <result column="n_author" property="nAuthor" jdbcType="VARCHAR" />
-    <result column="n_color" property="nColor" jdbcType="CHAR" />
-    <result column="n_addtime" property="nAddtime" jdbcType="INTEGER" />
-    <result column="n_note" property="nNote" jdbcType="SMALLINT" />
-    <result column="n_letter" property="nLetter" jdbcType="CHAR" />
-    <result column="n_isunion" property="nIsunion" jdbcType="SMALLINT" />
-    <result column="n_recycled" property="nRecycled" jdbcType="SMALLINT" />
-    <result column="n_entitle" property="nEntitle" jdbcType="VARCHAR" />
-    <result column="n_outline" property="nOutline" jdbcType="VARCHAR" />
-    <result column="n_keyword" property="nKeyword" jdbcType="VARCHAR" />
-    <result column="n_from" property="nFrom" jdbcType="VARCHAR" />
-    <result column="n_score" property="nScore" jdbcType="BIGINT" />
-    <result column="n_scorenum" property="nScorenum" jdbcType="INTEGER" />
-    <result column="n_content" property="nContent" jdbcType="LONGVARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.vs.videostation.mapper.SeaNewsMapper">
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaNews">
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="tid" jdbcType="SMALLINT" property="tid" />
+    <result column="n_title" jdbcType="CHAR" property="nTitle" />
+    <result column="n_pic" jdbcType="CHAR" property="nPic" />
+    <result column="n_hit" jdbcType="INTEGER" property="nHit" />
+    <result column="n_money" jdbcType="SMALLINT" property="nMoney" />
+    <result column="n_rank" jdbcType="SMALLINT" property="nRank" />
+    <result column="n_digg" jdbcType="SMALLINT" property="nDigg" />
+    <result column="n_tread" jdbcType="SMALLINT" property="nTread" />
+    <result column="n_commend" jdbcType="SMALLINT" property="nCommend" />
+    <result column="n_author" jdbcType="VARCHAR" property="nAuthor" />
+    <result column="n_color" jdbcType="CHAR" property="nColor" />
+    <result column="n_addtime" jdbcType="INTEGER" property="nAddtime" />
+    <result column="n_note" jdbcType="SMALLINT" property="nNote" />
+    <result column="n_letter" jdbcType="CHAR" property="nLetter" />
+    <result column="n_isunion" jdbcType="SMALLINT" property="nIsunion" />
+    <result column="n_recycled" jdbcType="SMALLINT" property="nRecycled" />
+    <result column="n_entitle" jdbcType="VARCHAR" property="nEntitle" />
+    <result column="n_outline" jdbcType="VARCHAR" property="nOutline" />
+    <result column="n_keyword" jdbcType="VARCHAR" property="nKeyword" />
+    <result column="n_from" jdbcType="VARCHAR" property="nFrom" />
+    <result column="n_score" jdbcType="BIGINT" property="nScore" />
+    <result column="n_scorenum" jdbcType="INTEGER" property="nScorenum" />
+    <result column="n_content" jdbcType="LONGVARCHAR" property="nContent" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sea_news
     where n_id = #{nId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaNews" >
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaNews">
     insert into sea_news (n_id, tid, n_title, 
       n_pic, n_hit, n_money, n_rank, 
       n_digg, n_tread, n_commend, 
@@ -49,7 +49,7 @@
       #{nKeyword,jdbcType=VARCHAR}, #{nFrom,jdbcType=VARCHAR}, #{nScore,jdbcType=BIGINT}, 
       #{nScorenum,jdbcType=INTEGER}, #{nContent,jdbcType=LONGVARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaNews" >
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaNews">
     update sea_news
     set tid = #{tid,jdbcType=SMALLINT},
       n_title = #{nTitle,jdbcType=CHAR},
@@ -76,14 +76,102 @@
       n_content = #{nContent,jdbcType=LONGVARCHAR}
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select n_id, tid, n_title, n_pic, n_hit, n_money, n_rank, n_digg, n_tread, n_commend, 
     n_author, n_color, n_addtime, n_note, n_letter, n_isunion, n_recycled, n_entitle, 
     n_outline, n_keyword, n_from, n_score, n_scorenum, n_content
     from sea_news
     where n_id = #{nId,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
+    select n_id, tid, n_title, n_pic, n_hit, n_money, n_rank, n_digg, n_tread, n_commend, 
+    n_author, n_color, n_addtime, n_note, n_letter, n_isunion, n_recycled, n_entitle, 
+    n_outline, n_keyword, n_from, n_score, n_scorenum, n_content
+    from sea_news
+  </select>
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaNews">
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="tid" jdbcType="SMALLINT" property="tid" />
+    <result column="n_title" jdbcType="CHAR" property="nTitle" />
+    <result column="n_pic" jdbcType="CHAR" property="nPic" />
+    <result column="n_hit" jdbcType="INTEGER" property="nHit" />
+    <result column="n_money" jdbcType="SMALLINT" property="nMoney" />
+    <result column="n_rank" jdbcType="SMALLINT" property="nRank" />
+    <result column="n_digg" jdbcType="SMALLINT" property="nDigg" />
+    <result column="n_tread" jdbcType="SMALLINT" property="nTread" />
+    <result column="n_commend" jdbcType="SMALLINT" property="nCommend" />
+    <result column="n_author" jdbcType="VARCHAR" property="nAuthor" />
+    <result column="n_color" jdbcType="CHAR" property="nColor" />
+    <result column="n_addtime" jdbcType="INTEGER" property="nAddtime" />
+    <result column="n_note" jdbcType="SMALLINT" property="nNote" />
+    <result column="n_letter" jdbcType="CHAR" property="nLetter" />
+    <result column="n_isunion" jdbcType="SMALLINT" property="nIsunion" />
+    <result column="n_recycled" jdbcType="SMALLINT" property="nRecycled" />
+    <result column="n_entitle" jdbcType="VARCHAR" property="nEntitle" />
+    <result column="n_outline" jdbcType="VARCHAR" property="nOutline" />
+    <result column="n_keyword" jdbcType="VARCHAR" property="nKeyword" />
+    <result column="n_from" jdbcType="VARCHAR" property="nFrom" />
+    <result column="n_score" jdbcType="BIGINT" property="nScore" />
+    <result column="n_scorenum" jdbcType="INTEGER" property="nScorenum" />
+    <result column="n_content" jdbcType="LONGVARCHAR" property="nContent" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sea_news
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaNews">
+    insert into sea_news (n_id, tid, n_title, 
+      n_pic, n_hit, n_money, n_rank, 
+      n_digg, n_tread, n_commend, 
+      n_author, n_color, n_addtime, 
+      n_note, n_letter, n_isunion, 
+      n_recycled, n_entitle, n_outline, 
+      n_keyword, n_from, n_score, 
+      n_scorenum, n_content)
+    values (#{nId,jdbcType=INTEGER}, #{tid,jdbcType=SMALLINT}, #{nTitle,jdbcType=CHAR}, 
+      #{nPic,jdbcType=CHAR}, #{nHit,jdbcType=INTEGER}, #{nMoney,jdbcType=SMALLINT}, #{nRank,jdbcType=SMALLINT}, 
+      #{nDigg,jdbcType=SMALLINT}, #{nTread,jdbcType=SMALLINT}, #{nCommend,jdbcType=SMALLINT}, 
+      #{nAuthor,jdbcType=VARCHAR}, #{nColor,jdbcType=CHAR}, #{nAddtime,jdbcType=INTEGER}, 
+      #{nNote,jdbcType=SMALLINT}, #{nLetter,jdbcType=CHAR}, #{nIsunion,jdbcType=SMALLINT}, 
+      #{nRecycled,jdbcType=SMALLINT}, #{nEntitle,jdbcType=VARCHAR}, #{nOutline,jdbcType=VARCHAR}, 
+      #{nKeyword,jdbcType=VARCHAR}, #{nFrom,jdbcType=VARCHAR}, #{nScore,jdbcType=BIGINT}, 
+      #{nScorenum,jdbcType=INTEGER}, #{nContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaNews">
+    update sea_news
+    set tid = #{tid,jdbcType=SMALLINT},
+      n_title = #{nTitle,jdbcType=CHAR},
+      n_pic = #{nPic,jdbcType=CHAR},
+      n_hit = #{nHit,jdbcType=INTEGER},
+      n_money = #{nMoney,jdbcType=SMALLINT},
+      n_rank = #{nRank,jdbcType=SMALLINT},
+      n_digg = #{nDigg,jdbcType=SMALLINT},
+      n_tread = #{nTread,jdbcType=SMALLINT},
+      n_commend = #{nCommend,jdbcType=SMALLINT},
+      n_author = #{nAuthor,jdbcType=VARCHAR},
+      n_color = #{nColor,jdbcType=CHAR},
+      n_addtime = #{nAddtime,jdbcType=INTEGER},
+      n_note = #{nNote,jdbcType=SMALLINT},
+      n_letter = #{nLetter,jdbcType=CHAR},
+      n_isunion = #{nIsunion,jdbcType=SMALLINT},
+      n_recycled = #{nRecycled,jdbcType=SMALLINT},
+      n_entitle = #{nEntitle,jdbcType=VARCHAR},
+      n_outline = #{nOutline,jdbcType=VARCHAR},
+      n_keyword = #{nKeyword,jdbcType=VARCHAR},
+      n_from = #{nFrom,jdbcType=VARCHAR},
+      n_score = #{nScore,jdbcType=BIGINT},
+      n_scorenum = #{nScorenum,jdbcType=INTEGER},
+      n_content = #{nContent,jdbcType=LONGVARCHAR}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select n_id, tid, n_title, n_pic, n_hit, n_money, n_rank, n_digg, n_tread, n_commend, 
+    n_author, n_color, n_addtime, n_note, n_letter, n_isunion, n_recycled, n_entitle, 
+    n_outline, n_keyword, n_from, n_score, n_scorenum, n_content
+    from sea_news
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
     select n_id, tid, n_title, n_pic, n_hit, n_money, n_rank, n_digg, n_tread, n_commend, 
     n_author, n_color, n_addtime, n_note, n_letter, n_isunion, n_recycled, n_entitle, 
     n_outline, n_keyword, n_from, n_score, n_scorenum, n_content

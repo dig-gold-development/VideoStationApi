@@ -1,6 +1,7 @@
 package com.site.vs.videostation.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class SeaType implements Serializable {
     private Short tid;
@@ -30,6 +31,16 @@ public class SeaType implements Serializable {
     private Short tptype;
 
     private String unionid;
+
+    private List<SeaType> categoryList;
+
+    public List<SeaType> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<SeaType> categoryList) {
+        this.categoryList = categoryList;
+    }
 
     private static final long serialVersionUID = 1L;
 

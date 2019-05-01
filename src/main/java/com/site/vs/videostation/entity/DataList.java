@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class DataList {
-    private List<Display> data;
+    private List<SeaData> data;
     private String title;
 
 }

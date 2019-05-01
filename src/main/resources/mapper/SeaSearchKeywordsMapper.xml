@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.site.vs.videostation.mapper.SeaSearchKeywordsMapper" >
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaSearchKeywords" >
-    <id column="aid" property="aid" jdbcType="INTEGER" />
-    <result column="keyword" property="keyword" jdbcType="CHAR" />
-    <result column="spwords" property="spwords" jdbcType="CHAR" />
-    <result column="count" property="count" jdbcType="INTEGER" />
-    <result column="result" property="result" jdbcType="INTEGER" />
-    <result column="lasttime" property="lasttime" jdbcType="INTEGER" />
-    <result column="tid" property="tid" jdbcType="SMALLINT" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.vs.videostation.mapper.SeaSearchKeywordsMapper">
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaSearchKeywords">
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="keyword" jdbcType="CHAR" property="keyword" />
+    <result column="spwords" jdbcType="CHAR" property="spwords" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="result" jdbcType="INTEGER" property="result" />
+    <result column="lasttime" jdbcType="INTEGER" property="lasttime" />
+    <result column="tid" jdbcType="SMALLINT" property="tid" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sea_search_keywords
     where aid = #{aid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaSearchKeywords" >
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaSearchKeywords">
     insert into sea_search_keywords (aid, keyword, spwords, 
       count, result, lasttime, 
       tid)
@@ -22,7 +22,7 @@
       #{count,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{lasttime,jdbcType=INTEGER}, 
       #{tid,jdbcType=SMALLINT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaSearchKeywords" >
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaSearchKeywords">
     update sea_search_keywords
     set keyword = #{keyword,jdbcType=CHAR},
       spwords = #{spwords,jdbcType=CHAR},
@@ -32,12 +32,52 @@
       tid = #{tid,jdbcType=SMALLINT}
     where aid = #{aid,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select aid, keyword, spwords, count, result, lasttime, tid
     from sea_search_keywords
     where aid = #{aid,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
+    select aid, keyword, spwords, count, result, lasttime, tid
+    from sea_search_keywords
+  </select>
+  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaSearchKeywords">
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="keyword" jdbcType="CHAR" property="keyword" />
+    <result column="spwords" jdbcType="CHAR" property="spwords" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="result" jdbcType="INTEGER" property="result" />
+    <result column="lasttime" jdbcType="INTEGER" property="lasttime" />
+    <result column="tid" jdbcType="SMALLINT" property="tid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sea_search_keywords
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaSearchKeywords">
+    insert into sea_search_keywords (aid, keyword, spwords, 
+      count, result, lasttime, 
+      tid)
+    values (#{aid,jdbcType=INTEGER}, #{keyword,jdbcType=CHAR}, #{spwords,jdbcType=CHAR}, 
+      #{count,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{lasttime,jdbcType=INTEGER}, 
+      #{tid,jdbcType=SMALLINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaSearchKeywords">
+    update sea_search_keywords
+    set keyword = #{keyword,jdbcType=CHAR},
+      spwords = #{spwords,jdbcType=CHAR},
+      count = #{count,jdbcType=INTEGER},
+      result = #{result,jdbcType=INTEGER},
+      lasttime = #{lasttime,jdbcType=INTEGER},
+      tid = #{tid,jdbcType=SMALLINT}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select aid, keyword, spwords, count, result, lasttime, tid
+    from sea_search_keywords
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
     select aid, keyword, spwords, count, result, lasttime, tid
     from sea_search_keywords
   </select>
