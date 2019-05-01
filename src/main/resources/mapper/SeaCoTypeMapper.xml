@@ -1,72 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.vs.videostation.mapper.SeaCoTypeMapper">
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoType">
-    <id column="tid" jdbcType="INTEGER" property="tid" />
-    <result column="cid" jdbcType="SMALLINT" property="cid" />
-    <result column="tname" jdbcType="VARCHAR" property="tname" />
-    <result column="siteurl" jdbcType="CHAR" property="siteurl" />
-    <result column="getherday" jdbcType="SMALLINT" property="getherday" />
-    <result column="playfrom" jdbcType="VARCHAR" property="playfrom" />
-    <result column="autocls" jdbcType="CHAR" property="autocls" />
-    <result column="classid" jdbcType="SMALLINT" property="classid" />
-    <result column="coding" jdbcType="VARCHAR" property="coding" />
-    <result column="sock" jdbcType="CHAR" property="sock" />
-    <result column="addtime" jdbcType="INTEGER" property="addtime" />
-    <result column="cjtime" jdbcType="INTEGER" property="cjtime" />
-    <result column="isok" jdbcType="BIT" property="isok" />
-    <result column="cotype" jdbcType="TINYINT" property="cotype" />
-    <result column="listconfig" jdbcType="LONGVARCHAR" property="listconfig" />
-    <result column="itemconfig" jdbcType="LONGVARCHAR" property="itemconfig" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from sea_co_type
-    where tid = #{tid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCoType">
-    insert into sea_co_type (tid, cid, tname, 
-      siteurl, getherday, playfrom, 
-      autocls, classid, coding, 
-      sock, addtime, cjtime, 
-      isok, cotype, listconfig, 
-      itemconfig)
-    values (#{tid,jdbcType=INTEGER}, #{cid,jdbcType=SMALLINT}, #{tname,jdbcType=VARCHAR}, 
-      #{siteurl,jdbcType=CHAR}, #{getherday,jdbcType=SMALLINT}, #{playfrom,jdbcType=VARCHAR}, 
-      #{autocls,jdbcType=CHAR}, #{classid,jdbcType=SMALLINT}, #{coding,jdbcType=VARCHAR}, 
-      #{sock,jdbcType=CHAR}, #{addtime,jdbcType=INTEGER}, #{cjtime,jdbcType=INTEGER}, 
-      #{isok,jdbcType=BIT}, #{cotype,jdbcType=TINYINT}, #{listconfig,jdbcType=LONGVARCHAR}, 
-      #{itemconfig,jdbcType=LONGVARCHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCoType">
-    update sea_co_type
-    set cid = #{cid,jdbcType=SMALLINT},
-      tname = #{tname,jdbcType=VARCHAR},
-      siteurl = #{siteurl,jdbcType=CHAR},
-      getherday = #{getherday,jdbcType=SMALLINT},
-      playfrom = #{playfrom,jdbcType=VARCHAR},
-      autocls = #{autocls,jdbcType=CHAR},
-      classid = #{classid,jdbcType=SMALLINT},
-      coding = #{coding,jdbcType=VARCHAR},
-      sock = #{sock,jdbcType=CHAR},
-      addtime = #{addtime,jdbcType=INTEGER},
-      cjtime = #{cjtime,jdbcType=INTEGER},
-      isok = #{isok,jdbcType=BIT},
-      cotype = #{cotype,jdbcType=TINYINT},
-      listconfig = #{listconfig,jdbcType=LONGVARCHAR},
-      itemconfig = #{itemconfig,jdbcType=LONGVARCHAR}
-    where tid = #{tid,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select tid, cid, tname, siteurl, getherday, playfrom, autocls, classid, coding, sock, 
-    addtime, cjtime, isok, cotype, listconfig, itemconfig
-    from sea_co_type
-    where tid = #{tid,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select tid, cid, tname, siteurl, getherday, playfrom, autocls, classid, coding, sock, 
-    addtime, cjtime, isok, cotype, listconfig, itemconfig
-    from sea_co_type
-  </select>
+
   <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoType">
     <id column="tid" jdbcType="INTEGER" property="tid" />
     <result column="cid" jdbcType="SMALLINT" property="cid" />

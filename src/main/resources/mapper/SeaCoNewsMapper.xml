@@ -1,68 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.vs.videostation.mapper.SeaCoNewsMapper">
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoNews">
-    <id column="n_id" jdbcType="INTEGER" property="nId" />
-    <result column="tid" jdbcType="SMALLINT" property="tid" />
-    <result column="n_title" jdbcType="CHAR" property="nTitle" />
-    <result column="n_keyword" jdbcType="VARCHAR" property="nKeyword" />
-    <result column="n_pic" jdbcType="CHAR" property="nPic" />
-    <result column="n_hit" jdbcType="INTEGER" property="nHit" />
-    <result column="n_author" jdbcType="VARCHAR" property="nAuthor" />
-    <result column="n_addtime" jdbcType="INTEGER" property="nAddtime" />
-    <result column="n_letter" jdbcType="CHAR" property="nLetter" />
-    <result column="n_outline" jdbcType="CHAR" property="nOutline" />
-    <result column="tname" jdbcType="CHAR" property="tname" />
-    <result column="n_from" jdbcType="CHAR" property="nFrom" />
-    <result column="n_inbase" jdbcType="CHAR" property="nInbase" />
-    <result column="n_entitle" jdbcType="VARCHAR" property="nEntitle" />
-    <result column="n_content" jdbcType="LONGVARCHAR" property="nContent" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from sea_co_news
-    where n_id = #{nId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCoNews">
-    insert into sea_co_news (n_id, tid, n_title, 
-      n_keyword, n_pic, n_hit, 
-      n_author, n_addtime, n_letter, 
-      n_outline, tname, n_from, n_inbase, 
-      n_entitle, n_content)
-    values (#{nId,jdbcType=INTEGER}, #{tid,jdbcType=SMALLINT}, #{nTitle,jdbcType=CHAR}, 
-      #{nKeyword,jdbcType=VARCHAR}, #{nPic,jdbcType=CHAR}, #{nHit,jdbcType=INTEGER}, 
-      #{nAuthor,jdbcType=VARCHAR}, #{nAddtime,jdbcType=INTEGER}, #{nLetter,jdbcType=CHAR}, 
-      #{nOutline,jdbcType=CHAR}, #{tname,jdbcType=CHAR}, #{nFrom,jdbcType=CHAR}, #{nInbase,jdbcType=CHAR}, 
-      #{nEntitle,jdbcType=VARCHAR}, #{nContent,jdbcType=LONGVARCHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCoNews">
-    update sea_co_news
-    set tid = #{tid,jdbcType=SMALLINT},
-      n_title = #{nTitle,jdbcType=CHAR},
-      n_keyword = #{nKeyword,jdbcType=VARCHAR},
-      n_pic = #{nPic,jdbcType=CHAR},
-      n_hit = #{nHit,jdbcType=INTEGER},
-      n_author = #{nAuthor,jdbcType=VARCHAR},
-      n_addtime = #{nAddtime,jdbcType=INTEGER},
-      n_letter = #{nLetter,jdbcType=CHAR},
-      n_outline = #{nOutline,jdbcType=CHAR},
-      tname = #{tname,jdbcType=CHAR},
-      n_from = #{nFrom,jdbcType=CHAR},
-      n_inbase = #{nInbase,jdbcType=CHAR},
-      n_entitle = #{nEntitle,jdbcType=VARCHAR},
-      n_content = #{nContent,jdbcType=LONGVARCHAR}
-    where n_id = #{nId,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select n_id, tid, n_title, n_keyword, n_pic, n_hit, n_author, n_addtime, n_letter, 
-    n_outline, tname, n_from, n_inbase, n_entitle, n_content
-    from sea_co_news
-    where n_id = #{nId,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select n_id, tid, n_title, n_keyword, n_pic, n_hit, n_author, n_addtime, n_letter, 
-    n_outline, tname, n_from, n_inbase, n_entitle, n_content
-    from sea_co_news
-  </select>
+
+
   <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoNews">
     <id column="n_id" jdbcType="INTEGER" property="nId" />
     <result column="tid" jdbcType="SMALLINT" property="tid" />

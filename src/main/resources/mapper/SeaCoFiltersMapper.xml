@@ -1,55 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.vs.videostation.mapper.SeaCoFiltersMapper">
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoFilters">
-    <id column="ID" jdbcType="INTEGER" property="id" />
-    <result column="Name" jdbcType="VARCHAR" property="name" />
-    <result column="rColumn" jdbcType="BIT" property="rcolumn" />
-    <result column="uesMode" jdbcType="BIT" property="uesmode" />
-    <result column="sFind" jdbcType="VARCHAR" property="sfind" />
-    <result column="sStart" jdbcType="VARCHAR" property="sstart" />
-    <result column="sEnd" jdbcType="VARCHAR" property="send" />
-    <result column="sReplace" jdbcType="VARCHAR" property="sreplace" />
-    <result column="Flag" jdbcType="BIT" property="flag" />
-    <result column="cotype" jdbcType="TINYINT" property="cotype" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from sea_co_filters
-    where ID = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCoFilters">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      UUID
-    </selectKey>
-    insert into sea_co_filters (Name, rColumn, uesMode, 
-      sFind, sStart, sEnd, 
-      sReplace, Flag, cotype)
-    values (#{name,jdbcType=VARCHAR}, #{rcolumn,jdbcType=BIT}, #{uesmode,jdbcType=BIT}, 
-      #{sfind,jdbcType=VARCHAR}, #{sstart,jdbcType=VARCHAR}, #{send,jdbcType=VARCHAR}, 
-      #{sreplace,jdbcType=VARCHAR}, #{flag,jdbcType=BIT}, #{cotype,jdbcType=TINYINT})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCoFilters">
-    update sea_co_filters
-    set Name = #{name,jdbcType=VARCHAR},
-      rColumn = #{rcolumn,jdbcType=BIT},
-      uesMode = #{uesmode,jdbcType=BIT},
-      sFind = #{sfind,jdbcType=VARCHAR},
-      sStart = #{sstart,jdbcType=VARCHAR},
-      sEnd = #{send,jdbcType=VARCHAR},
-      sReplace = #{sreplace,jdbcType=VARCHAR},
-      Flag = #{flag,jdbcType=BIT},
-      cotype = #{cotype,jdbcType=TINYINT}
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select ID, Name, rColumn, uesMode, sFind, sStart, sEnd, sReplace, Flag, cotype
-    from sea_co_filters
-    where ID = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select ID, Name, rColumn, uesMode, sFind, sStart, sEnd, sReplace, Flag, cotype
-    from sea_co_filters
-  </select>
+
   <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoFilters">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="Name" jdbcType="VARCHAR" property="name" />

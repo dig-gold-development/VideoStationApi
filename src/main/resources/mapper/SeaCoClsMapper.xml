@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.vs.videostation.mapper.SeaCoClsMapper">
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoCls">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="clsname" jdbcType="VARCHAR" property="clsname" />
-    <result column="sysclsid" jdbcType="SMALLINT" property="sysclsid" />
-    <result column="cotype" jdbcType="TINYINT" property="cotype" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from sea_co_cls
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaCoCls">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      UUID
-    </selectKey>
-    insert into sea_co_cls (clsname, sysclsid, cotype
-      )
-    values (#{clsname,jdbcType=VARCHAR}, #{sysclsid,jdbcType=SMALLINT}, #{cotype,jdbcType=TINYINT}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaCoCls">
-    update sea_co_cls
-    set clsname = #{clsname,jdbcType=VARCHAR},
-      sysclsid = #{sysclsid,jdbcType=SMALLINT},
-      cotype = #{cotype,jdbcType=TINYINT}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, clsname, sysclsid, cotype
-    from sea_co_cls
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, clsname, sysclsid, cotype
-    from sea_co_cls
-  </select>
+
   <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaCoCls">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="clsname" jdbcType="VARCHAR" property="clsname" />

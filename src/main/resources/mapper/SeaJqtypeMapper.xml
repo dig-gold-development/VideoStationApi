@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.vs.videostation.mapper.SeaJqtypeMapper">
-  <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaJqtype">
-    <id column="tid" jdbcType="SMALLINT" property="tid" />
-    <result column="tname" jdbcType="CHAR" property="tname" />
-    <result column="ishidden" jdbcType="SMALLINT" property="ishidden" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
-    delete from sea_jqtype
-    where tid = #{tid,jdbcType=SMALLINT}
-  </delete>
-  <insert id="insert" parameterType="com.site.vs.videostation.entity.SeaJqtype">
-    insert into sea_jqtype (tid, tname, ishidden
-      )
-    values (#{tid,jdbcType=SMALLINT}, #{tname,jdbcType=CHAR}, #{ishidden,jdbcType=SMALLINT}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.site.vs.videostation.entity.SeaJqtype">
-    update sea_jqtype
-    set tname = #{tname,jdbcType=CHAR},
-      ishidden = #{ishidden,jdbcType=SMALLINT}
-    where tid = #{tid,jdbcType=SMALLINT}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
-    select tid, tname, ishidden
-    from sea_jqtype
-    where tid = #{tid,jdbcType=SMALLINT}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select tid, tname, ishidden
-    from sea_jqtype
-  </select>
+
   <resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaJqtype">
     <id column="tid" jdbcType="SMALLINT" property="tid" />
     <result column="tname" jdbcType="CHAR" property="tname" />
