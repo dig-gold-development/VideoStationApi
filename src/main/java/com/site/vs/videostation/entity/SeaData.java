@@ -117,6 +117,7 @@ public class SeaData implements Serializable {
 
     private List<Source> list;
 
+    @JsonProperty("vod_url_list")
     public List<Source> getList() {
         return list;
     }
@@ -261,7 +262,7 @@ public class SeaData implements Serializable {
         this.vIsmake = vIsmake;
     }
 
-    @JsonIgnore
+    @JsonProperty("actor")
     public String getvActor() {
         return vActor;
     }

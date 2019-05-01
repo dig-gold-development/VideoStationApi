@@ -5,9 +5,9 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    username: mysql190409c075
-    password: c075c9X31c
-    url: jdbc:mysql://43.226.43.146:3306/mysql190409c075_db?characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+    url: jdbc:mysql://188.131.252.174:3306/seacms?characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     hikari:.connectionTestQuery: SELECT 1
     hikari:.connectionTimeout: 30000
     hikari:.idleTimeout: 600000
