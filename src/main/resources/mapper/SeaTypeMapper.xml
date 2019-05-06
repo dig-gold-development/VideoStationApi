@@ -18,6 +18,7 @@
     <result column="ishidden" jdbcType="SMALLINT" property="ishidden" />
     <result column="tptype" jdbcType="SMALLINT" property="tptype" />
     <result column="unionid" jdbcType="LONGVARCHAR" property="unionid" />
+    <result column="total" jdbcType="INTEGER" property="total" />
     <collection column="tid" javaType="java.util.List" ofType="SeaType" property="categoryList" select="getById" />
 
   </resultMap>
@@ -75,6 +76,15 @@
         from sea_type
         WHERE upid = #{id}
     </select>
+
+  <select id="getTypeInfoByTypeId" parameterType="int" resultMap="BaseResultMap">
+        select st.tid, st.upid, st.tname,count(*) as total
+        from sea_type st  right join  sea_type st1 on st1.upid = st.tid or st1.tid = st.tid JOIN sea_data sd on sd.tid = st1.tid
+        where  st.tid = #{categoryId}
+
+  </select>
+
+
 
 
 </mapper>

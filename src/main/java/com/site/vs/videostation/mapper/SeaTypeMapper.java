@@ -1,6 +1,8 @@
 package com.site.vs.videostation.mapper;
 
 import com.site.vs.videostation.entity.SeaType;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface SeaTypeMapper {
@@ -15,4 +17,8 @@ public interface SeaTypeMapper {
     int updateByPrimaryKey(SeaType record);
 
     List<SeaType>  getAll( int categoryId);
+
+    SeaType  getTypeInfoByTypeId(int id);
+
+
 }

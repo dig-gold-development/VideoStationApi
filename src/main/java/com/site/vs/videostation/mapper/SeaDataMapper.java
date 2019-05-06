@@ -20,4 +20,5 @@ public interface SeaDataMapper {
     List<SeaData> findDisplayDataByTypeId(int id);
     List<SeaData> findDisplayDataRecent();
     List<SeaData> findDisplayDataByTypeIds(@Param("list") List<Short> idList);
+
 }

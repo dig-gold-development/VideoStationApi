@@ -1,5 +1,7 @@
 package com.site.vs.videostation.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -32,8 +34,20 @@ public class SeaType implements Serializable {
 
     private String unionid;
 
+    private  Integer total;
+
     private List<SeaType> categoryList;
 
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+
+    @JsonIgnore
     public List<SeaType> getCategoryList() {
         return categoryList;
     }
@@ -68,6 +82,7 @@ public class SeaType implements Serializable {
         this.tname = tname == null ? null : tname.trim();
     }
 
+    @JsonIgnore
     public String getTenname() {
         return tenname;
     }
@@ -76,6 +91,7 @@ public class SeaType implements Serializable {
         this.tenname = tenname == null ? null : tenname.trim();
     }
 
+    @JsonIgnore
     public Integer getTorder() {
         return torder;
     }
@@ -84,6 +100,7 @@ public class SeaType implements Serializable {
         this.torder = torder;
     }
 
+    @JsonIgnore
     public String getTemplist() {
         return templist;
     }
@@ -92,6 +109,7 @@ public class SeaType implements Serializable {
         this.templist = templist == null ? null : templist.trim();
     }
 
+    @JsonIgnore
     public String getTemplist1() {
         return templist1;
     }
@@ -100,6 +118,7 @@ public class SeaType implements Serializable {
         this.templist1 = templist1 == null ? null : templist1.trim();
     }
 
+    @JsonIgnore
     public String getTemplist2() {
         return templist2;
     }
@@ -108,6 +127,7 @@ public class SeaType implements Serializable {
         this.templist2 = templist2 == null ? null : templist2.trim();
     }
 
+    @JsonIgnore
     public String getTitle() {
         return title;
     }
@@ -116,6 +136,7 @@ public class SeaType implements Serializable {
         this.title = title == null ? null : title.trim();
     }
 
+    @JsonIgnore
     public String getKeyword() {
         return keyword;
     }
@@ -124,6 +145,7 @@ public class SeaType implements Serializable {
         this.keyword = keyword == null ? null : keyword.trim();
     }
 
+    @JsonIgnore
     public String getDescription() {
         return description;
     }
@@ -132,6 +154,7 @@ public class SeaType implements Serializable {
         this.description = description == null ? null : description.trim();
     }
 
+    @JsonIgnore
     public Short getIshidden() {
         return ishidden;
     }
@@ -140,6 +163,7 @@ public class SeaType implements Serializable {
         this.ishidden = ishidden;
     }
 
+    @JsonIgnore
     public Short getTptype() {
         return tptype;
     }
@@ -148,6 +172,7 @@ public class SeaType implements Serializable {
         this.tptype = tptype;
     }
 
+    @JsonIgnore
     public String getUnionid() {
         return unionid;
     }
