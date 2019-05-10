@@ -27,7 +27,7 @@ public class DetailController {
     public ApiResponse findDetailById(@RequestParam("id") int id) {
         SeaData detail = detailService.findDetialById(id);
         String playContent = detail.getBody();
-        String[] sourceStringArr = playContent.split("\\$\\$\\$\\$\\$");
+        String[] sourceStringArr = playContent.split("\\$\\$\\$(\\w+|\\W+)\\$\\$");
         List<Source> list = new ArrayList<>();
         Iterator sourceIterator = Arrays.stream(sourceStringArr).iterator();
         while (sourceIterator.hasNext()) {
@@ -43,22 +43,27 @@ public class DetailController {
                     String episode = String.valueOf(episodeIterator.next());
                     String[] unitArr = episode.split("\\$");
                     Movie movie = new Movie();
-                    Arrays.stream(unitArr).forEach((arr) -> {
-                        try {
-                            Integer playname = Integer.parseInt(arr);
-                            movie.setPlayName(arr);
-                        } catch (Exception e) {
-                            if (arr.contains("http")) {
-                                if (arr.endsWith("mp4") || arr.endsWith("m3u8")) {
-                                    movie.setIsRealUrl(1);
-                                }
-                                movie.setPlayUrl(arr);
-                            } else {
-                                movie.setSource(arr);
-                                source.setSourceName(arr);
+
+                    for (int i = 0; i < unitArr.length; i++) {
+                        String content = unitArr[i];
+                        if  (i == 0 ) {
+                            movie.setPlayName(content);
+                        }else if (i == 1) {
+                            if (content.endsWith("mp4") || content.endsWith("m3u8")) {
+                                movie.setIsRealUrl(1);
                             }
+                            content = content.replace("https", "http");
+                            movie.setPlayUrl(content);
+
+
+                        } else if (i == 2) {
+
+                            movie.setSource(content);
+                            source.setSourceName(content);
+
                         }
-                    });
+                    }
+
                     movieList.add(movie);
                 }
                 source.setMovieList(movieList);
