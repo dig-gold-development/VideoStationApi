@@ -36,9 +36,9 @@ public class RankService {
 
             }
             if (ids.size() > 0) {
-                return  displayDao.findRankByTypeIds(ids,page);
+                return  displayDao.findRankByTypeIds(ids,page,10);
             }else {
-                return  displayDao.findRankByTypeId(id,page);
+                return  displayDao.findRankByTypeId(id,page,10);
             }
 
 

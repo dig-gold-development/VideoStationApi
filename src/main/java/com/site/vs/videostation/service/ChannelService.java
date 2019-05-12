@@ -18,7 +18,7 @@ public class ChannelService {
     @Autowired
     SeaTypeMapper categoryMapper;
 
-    public List<SeaType> findAllChannel() {
+    public List<SeaType> findHotChannel() {
 
         List<SeaType> types = new ArrayList<>();
         SeaType movieType = categoryMapper.getTypeInfoByTypeId(28);
@@ -36,6 +36,36 @@ public class ChannelService {
 
         return types;
 
+
+    }
+
+    public List<SeaType> findAllChannel() {
+        List<SeaType> types = new ArrayList<>();
+        SeaType xiju = categoryMapper.getTypeInfoByTypeId(34);
+        types.add(xiju);
+
+        SeaType aiqing = categoryMapper.getTypeInfoByTypeId(35);
+        types.add(aiqing);
+
+        SeaType kehuan = categoryMapper.getTypeInfoByTypeId(37);
+        types.add(kehuan);
+
+        SeaType kongbu = categoryMapper.getTypeInfoByTypeId(45);
+        types.add(kongbu);
+
+        SeaType juqing = categoryMapper.getTypeInfoByTypeId(46);
+        types.add(juqing);
+
+        SeaType zhanzheng = categoryMapper.getTypeInfoByTypeId(47);
+        types.add(zhanzheng);
+
+        SeaType zailan = categoryMapper.getTypeInfoByTypeId(48);
+        types.add(zailan);
+
+        SeaType qingchun = categoryMapper.getTypeInfoByTypeId(50);
+        types.add(qingchun);
+
+        return  types;
 
     }
 

@@ -17,8 +17,11 @@ public interface SeaDataMapper {
     int updateByPrimaryKey(SeaData record);
 
     SeaData findDetialById(int id);
-    List<SeaData> findDisplayDataByTypeId(int id);
-    List<SeaData> findDisplayDataRecent();
-    List<SeaData> findDisplayDataByTypeIds(@Param("list") List<Short> idList);
+    List<SeaData> findSeaDataByTypeId(int id);
+    List<SeaData> findSeaDataByFilterId(@Param("id") int id,@Param("year") Integer year,@Param("area") String area);
+    List<SeaData> findSeaDataRecent();
+    List<SeaData> findSeaDataByTypeIds(@Param("list") List<Short> idList);
+    List<SeaData> findSeaDataByFilterIds(@Param("list") List<Short> idList,@Param("year") Integer year,@Param("area") String area);
+
 
 }

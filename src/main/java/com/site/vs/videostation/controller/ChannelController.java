@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "channel")
@@ -20,8 +22,18 @@ public class ChannelController {
     private ChannelService channelService;
     @GetMapping(value = "/getChannels")
     public ApiResponse findAllChannel() {
-        List<SeaType> types = channelService.findAllChannel();
-        return ApiResponseUtil.success(types);
+
+        List<SeaType> hotChannel = channelService.findHotChannel();
+        List<SeaType> allChannel = channelService.findAllChannel();
+
+
+        Map channel = new HashMap<>();
+        channel.put("hot",hotChannel);
+        channel.put("channels",allChannel);
+
+        return ApiResponseUtil.success(channel);
 
     }
+
+
 }

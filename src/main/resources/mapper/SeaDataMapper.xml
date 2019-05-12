@@ -179,9 +179,9 @@
 		d.tname,
 		v_name,
 		CASE
-		<![CDATA[ locate( 'http://', v_pic ) ]]>
+		<![CDATA[ locate( 'http', v_pic ) ]]>
 		WHEN 0 THEN
-		<![CDATA[ CONCAT( 'http://host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
+		<![CDATA[ CONCAT( 'http://188.131.252.174/cms/upload/', v_pic ) ]]> ELSE v_pic
 		END as v_pic,
 		v_actor,
 		v_publishyear,
@@ -202,15 +202,15 @@
 		and a.v_id = #{tid}
 	</select>
 
-  <select id="findDisplayDataByTypeId" parameterType="int" resultType="Display">
+  <select id="findSeaDataByTypeId" parameterType="int" resultMap="BaseResultMap">
 
 		SELECT
 			v_id,
 			v_name,
 			CASE
-				<![CDATA[ locate( 'http://', v_pic ) ]]>
+				<![CDATA[ locate( 'http', v_pic ) ]]>
 			WHEN 0 THEN
-				<![CDATA[ CONCAT( 'http://host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
+				<![CDATA[ CONCAT( 'http://188.131.252.174/cms/upload/', v_pic ) ]]> ELSE v_pic
 			END as v_pic,
 			v_actor,
 			v_publishyear,
@@ -223,17 +223,48 @@
 			v_addtime DESC
 	</select>
 
-  <select id="findDisplayDataRecent" resultType="Display">
+    <select id="findSeaDataByFilterId"  resultMap="BaseResultMap">
+
+		SELECT
+			v_id,
+			v_name,
+			CASE
+				<![CDATA[ locate( 'http', v_pic ) ]]>
+			WHEN 0 THEN
+				<![CDATA[ CONCAT( 'http://188.131.252.174/cms/upload/', v_pic ) ]]> ELSE v_pic
+			END as v_pic,
+			v_actor,
+			v_publishyear,
+			v_publisharea
+		FROM
+			sea_data
+		WHERE
+			tid = #{id}
+        <if test="year != null and year !=''">
+            AND v_publishyear = ${year}
+        </if>
+
+        <if test="area != null and area !=''">
+            AND v_publisharea = ${area}
+        </if>
+
+		ORDER BY
+			v_addtime DESC
+	</select>
+
+
+
+  <select id="findSeaDataRecent" resultMap="BaseResultMap">
 		select v_id,v_name,v_pic,v_actor,v_publishyear,v_publisharea  from sea_data order by v_addtime desc limit 5
 	</select>
 
-  <select id="findDisplayDataByTypeIds" resultType="Display">
+  <select id="findSeaDataByTypeIds" resultMap="BaseResultMap">
     select  v_id,
     v_name,
     CASE
-    <![CDATA[ locate( 'http://', v_pic ) ]]>
+    <![CDATA[ locate( 'http', v_pic ) ]]>
     WHEN 0 THEN
-    <![CDATA[ CONCAT( 'http://host812095401.s540.pppf.com.cn/upload/', v_pic ) ]]> ELSE v_pic
+    <![CDATA[ CONCAT( 'http://188.131.252.174/cms/upload/', v_pic ) ]]> ELSE v_pic
     END as v_pic,
     v_actor,
     v_publishyear,
@@ -245,6 +276,39 @@
       #{tid}
     </foreach>
   </select>
+
+    <select id="findSeaDataByFilterIds"  resultMap="BaseResultMap">
+
+		SELECT
+			v_id,
+			v_name,
+			CASE
+				<![CDATA[ locate( 'http', v_pic ) ]]>
+			WHEN 0 THEN
+				<![CDATA[ CONCAT( 'http://188.131.252.174/cms/upload/', v_pic ) ]]> ELSE v_pic
+			END as v_pic,
+			v_actor,
+			v_publishyear,
+			v_publisharea
+		FROM
+			sea_data
+		WHERE
+			tid in
+
+        <foreach close=")" collection="list" item="tid" open="(" separator=",">
+            #{tid}
+        </foreach>
+        <if test="year != null and year !=''">
+            AND v_publishyear = ${year}
+        </if>
+
+        <if test="area != null and area !=''">
+            AND v_publisharea= ${area}
+        </if>
+
+		ORDER BY
+			v_addtime DESC
+	</select>
 
 
 </mapper>

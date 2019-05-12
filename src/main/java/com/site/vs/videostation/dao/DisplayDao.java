@@ -16,27 +16,39 @@ public class DisplayDao {
 
     public List<SeaData> findDisplayDataRecentByTypeId(int id) {
         PageHelper.startPage(1, 6);
-       return  mapper.findDisplayDataByTypeId(id);
+       return  mapper.findSeaDataByTypeId(id);
     }
 
     public  List<SeaData> findDisplayDataRecentByTypeIds(List<Short> ids) {
         PageHelper.startPage(1, 6);
-        return  mapper.findDisplayDataByTypeIds(ids);
+        return  mapper.findSeaDataByTypeIds(ids);
     }
 
     public List<SeaData> findDisplayDataRecent() {
-        return mapper.findDisplayDataRecent();
+        return mapper.findSeaDataRecent();
     }
 
-    public List<SeaData> findRankByTypeId(int id ,int page) {
-        PageHelper.startPage(page,10);
-        List<SeaData>  disPlayList = mapper.findDisplayDataByTypeId(id);
+    public List<SeaData> findRankByTypeId(int id ,int page,int pageSize) {
+        PageHelper.startPage(page,pageSize);
+        List<SeaData>  disPlayList = mapper.findSeaDataByTypeId(id);
         return disPlayList;
     }
 
-    public  List<SeaData> findRankByTypeIds(List<Short> ids,int page) {
-        PageHelper.startPage(page,10);
-        List<SeaData>  disPlayList = mapper.findDisplayDataByTypeIds(ids);
+    public  List<SeaData> findRankByTypeIds(List<Short> ids,int page,int pageSize) {
+        PageHelper.startPage(page,pageSize);
+        List<SeaData>  disPlayList = mapper.findSeaDataByTypeIds(ids);
+        return disPlayList;
+    }
+
+    public List<SeaData> findListByTypeIds(List<Short> ids,Integer year,String area,int page,int pgaeSize) {
+        PageHelper.startPage(page,pgaeSize);
+        List<SeaData>  disPlayList = mapper.findSeaDataByFilterIds(ids,year,area);
+        return disPlayList;
+    }
+
+    public List<SeaData> findListByTypeId(int id,Integer year,String area,int page,int pgaeSize) {
+        PageHelper.startPage(page,pgaeSize);
+        List<SeaData>  disPlayList = mapper.findSeaDataByFilterId(id,year,area);
         return disPlayList;
     }
 }
