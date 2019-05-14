@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.site.vs.videostation.mapper.SearchMapper" >
+    <select id="getAll"  resultType="SeaData">
+		select v_id as tid,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data order by v_addtime desc
+	</select>
+
+	<select id="getByTid" parameterType="int"  resultType="SeaData">
+		select v_id as tid,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where tid = #{tid}  order by v_addtime desc
+	</select>
+
+	<select id="getByName" parameterType="String"  resultType="SeaData">
+		select v_id as tid,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where v_name = #{name}  order by v_addtime desc
+	</select>
+
+</mapper>
