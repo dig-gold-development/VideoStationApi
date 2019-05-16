@@ -16,8 +16,24 @@ public class ApiResponse <T> implements Serializable {
         this.message = message;
         this.data = data;
     }
+
+    private ApiResponse(CodeMsg codeMsg) {
+        if(codeMsg != null) {
+            this.code = codeMsg.getCode();
+            this.message = codeMsg.getMsg();
+        }
+    }
+
+
     public ApiResponse(){
 
+    }
+
+    /**
+     *  失败时候的调用
+     * */
+    public static  <T> ApiResponse<T> error(CodeMsg codeMsg){
+        return new ApiResponse<T>(codeMsg);
     }
 
     public int getCode() {

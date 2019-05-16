@@ -1,7 +1,6 @@
 package com.site.vs.videostation.service;
 
 
-import com.site.vs.videostation.dao.DisplayDao;
 import com.site.vs.videostation.entity.CategoryDetail;
 import com.site.vs.videostation.entity.SeaData;
 import com.site.vs.videostation.entity.SeaType;
@@ -20,7 +19,7 @@ public class CategoryService {
     SeaTypeMapper categoryMapper;
 
     @Autowired
-    DisplayDao displayDao;
+    DisplayService displayService;
 
     public CategoryDetail findChannelDetailByData(SeaData seaData,int page,int pageSize ) {
 
@@ -55,9 +54,9 @@ public class CategoryService {
         String area = seaData.getvPublisharea();
         List<SeaData> seaDatas;
         if (ids.size() > 0) {
-            seaDatas = displayDao.findListByTypeIds(ids,year,area,page,pageSize);
+            seaDatas = displayService.findListByTypeIds(ids,year,area,page,pageSize);
         }else {
-            seaDatas =  displayDao.findListByTypeId(id,year,area,page,pageSize);
+            seaDatas =  displayService.findListByTypeId(id,year,area,page,pageSize);
         }
         CategoryDetail detail = new CategoryDetail();
         if (seaDatas != null) {

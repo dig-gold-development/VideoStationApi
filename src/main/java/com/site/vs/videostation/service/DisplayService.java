@@ -1,4 +1,4 @@
-package com.site.vs.videostation.dao;
+package com.site.vs.videostation.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DisplayDao {
+public class DisplayService {
     @Autowired
     SeaDataMapper mapper;
 

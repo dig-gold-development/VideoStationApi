@@ -1,24 +1,19 @@
 package com.site.vs.videostation.service;
 
 
-import com.site.vs.videostation.dao.DisplayDao;
 import com.site.vs.videostation.entity.*;
-import com.site.vs.videostation.mapper.CategoryMapper;
-import com.site.vs.videostation.mapper.DetailMapper;
 import com.site.vs.videostation.mapper.SeaTypeMapper;
 import com.site.vs.videostation.until.ApiResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class HomePageService {
     @Autowired
-    DisplayDao displayDao;
+    DisplayService displayService;
 
     @Autowired
     SeaTypeMapper categoryMapper;
@@ -29,7 +24,7 @@ public class HomePageService {
         HomePage homePage = new HomePage();
 
         //最近更新
-        List<SeaData> recentList = displayDao.findDisplayDataRecent();
+        List<SeaData> recentList = displayService.findDisplayDataRecent();
         homePage.setSlide_list(recentList);
 
 
@@ -87,9 +82,9 @@ public class HomePageService {
             }
         }
         if (ids.size() > 0) {
-            return  displayDao.findDisplayDataRecentByTypeIds(ids);
+            return  displayService.findDisplayDataRecentByTypeIds(ids);
         }else {
-            return  displayDao.findDisplayDataRecentByTypeId(id);
+            return  displayService.findDisplayDataRecentByTypeId(id);
         }
 
     }

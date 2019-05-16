@@ -34,6 +34,8 @@ public class SeaType implements Serializable {
 
     private String unionid;
 
+    private  String pic;
+
     private  Integer total;
 
     private List<SeaType> categoryList;
@@ -73,6 +75,10 @@ public class SeaType implements Serializable {
     public void setUpid(Byte upid) {
         this.upid = upid;
     }
+
+    public String getPic() { return pic; }
+
+    public void setPic(String pic) { this.pic = pic; }
 
     public String getTname() {
         return tname;

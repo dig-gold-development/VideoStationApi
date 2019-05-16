@@ -22,15 +22,21 @@ public class ChannelService {
 
         List<SeaType> types = new ArrayList<>();
         SeaType movieType = categoryMapper.getTypeInfoByTypeId(28);
+        movieType.setPic("http://188.131.252.174/cms/pic/icon/dianying.png");
         types.add(movieType);
 
         SeaType teleplayType = categoryMapper.getTypeInfoByTypeId(29);
+
+        teleplayType.setPic("http://188.131.252.174/cms/pic/icon/vip-.png");
         types.add(teleplayType);
 
         SeaType  artsType = categoryMapper.getTypeInfoByTypeId(30);
+        artsType.setPic("http://188.131.252.174/cms/pic/icon/zongyi-copy.png");
         types.add(artsType);
 
         SeaType  comicType = categoryMapper.getTypeInfoByTypeId(31);
+
+        comicType.setPic("http://188.131.252.174/cms/pic/icon/dongman.png");
         types.add(comicType);
 
 
@@ -42,27 +48,35 @@ public class ChannelService {
     public List<SeaType> findAllChannel() {
         List<SeaType> types = new ArrayList<>();
         SeaType xiju = categoryMapper.getTypeInfoByTypeId(34);
+        xiju.setPic("http://188.131.252.174/cms/pic/icon/xijuzhuobielin.png");
         types.add(xiju);
 
         SeaType aiqing = categoryMapper.getTypeInfoByTypeId(35);
+        aiqing.setPic("http://188.131.252.174/cms/pic/icon/2.png");
         types.add(aiqing);
 
         SeaType kehuan = categoryMapper.getTypeInfoByTypeId(37);
+        kehuan.setPic("http://188.131.252.174/cms/pic/icon/kehuan.png");
         types.add(kehuan);
 
         SeaType kongbu = categoryMapper.getTypeInfoByTypeId(45);
+        kongbu.setPic("http://188.131.252.174/cms/pic/icon/weibiaoti--.png");
         types.add(kongbu);
 
         SeaType juqing = categoryMapper.getTypeInfoByTypeId(46);
+        juqing.setPic("http://188.131.252.174/cms/pic/icon/juqingjieshao.png");
         types.add(juqing);
 
         SeaType zhanzheng = categoryMapper.getTypeInfoByTypeId(47);
+        zhanzheng.setPic("http://188.131.252.174/cms/pic/icon/mbjf.png");
         types.add(zhanzheng);
 
         SeaType zailan = categoryMapper.getTypeInfoByTypeId(48);
+        zailan.setPic("http://188.131.252.174/cms/pic/icon/zainan.png");
         types.add(zailan);
 
         SeaType qingchun = categoryMapper.getTypeInfoByTypeId(50);
+        qingchun.setPic("http://188.131.252.174/cms/pic/icon/qingchunjiqing.png");
         types.add(qingchun);
 
         return  types;

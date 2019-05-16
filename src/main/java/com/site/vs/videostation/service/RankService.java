@@ -1,7 +1,5 @@
 package com.site.vs.videostation.service;
 
-import com.github.pagehelper.PageInfo;
-import com.site.vs.videostation.dao.DisplayDao;
 import com.site.vs.videostation.entity.SeaData;
 import com.site.vs.videostation.entity.SeaType;
 import com.site.vs.videostation.mapper.SeaTypeMapper;
@@ -15,7 +13,7 @@ import java.util.List;
 public class RankService {
 
     @Autowired
-    DisplayDao displayDao;
+    DisplayService displayService;
 
     @Autowired
     SeaTypeMapper categoryMapper;
@@ -36,9 +34,9 @@ public class RankService {
 
             }
             if (ids.size() > 0) {
-                return  displayDao.findRankByTypeIds(ids,page,10);
+                return  displayService.findRankByTypeIds(ids,page,10);
             }else {
-                return  displayDao.findRankByTypeId(id,page,10);
+                return  displayService.findRankByTypeId(id,page,10);
             }
 
 

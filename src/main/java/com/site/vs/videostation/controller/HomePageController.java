@@ -2,6 +2,7 @@ package com.site.vs.videostation.controller;
 
 
 import com.site.vs.videostation.entity.ApiResponse;
+import com.site.vs.videostation.helper.RedisHelperImpl;
 import com.site.vs.videostation.service.HomePageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -18,11 +19,15 @@ public class HomePageController  {
 
     @Autowired
     private HomePageService homeService;
+    @Autowired
+    private RedisHelperImpl redisHelper;
 
 
     @Cacheable(value = "home")
     @RequestMapping
     public ApiResponse getHomePage() {
+
+       
 
         ApiResponse homeData = homeService.findHomeVideoForRecent();
         return homeData;

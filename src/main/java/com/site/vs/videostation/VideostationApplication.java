@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.Properties;
 
 
-@MapperScan("com.site.vs.videostation.mapper")
+@MapperScan({"com.site.vs.videostation.mapper","com.site.vs.videostation.dao"})
 @SpringBootApplication
 public class VideostationApplication {
 
