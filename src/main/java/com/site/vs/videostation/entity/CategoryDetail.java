@@ -42,8 +42,17 @@ public class CategoryDetail {
         this.seaList = seaList;
     }
 
+    public long getCount() {
+        return count;
+    }
+
+    public void setCount(long count) {
+        this.count = count;
+    }
+
     private List<SeaType> seaTypeList;
     private List<String> areaList;
     private List<Integer> yearList;
     private List<SeaData> seaList;
+    private long count;
 }

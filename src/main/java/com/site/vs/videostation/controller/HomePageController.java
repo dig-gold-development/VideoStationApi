@@ -23,11 +23,9 @@ public class HomePageController  {
     private RedisHelperImpl redisHelper;
 
 
-    @Cacheable(value = "home")
     @RequestMapping
     public ApiResponse getHomePage() {
 
-       
 
         ApiResponse homeData = homeService.findHomeVideoForRecent();
         return homeData;

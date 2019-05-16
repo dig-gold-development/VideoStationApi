@@ -2,6 +2,7 @@ package com.site.vs.videostation.service;
 
 
 import com.site.vs.videostation.entity.CategoryDetail;
+import com.site.vs.videostation.entity.PageBean;
 import com.site.vs.videostation.entity.SeaData;
 import com.site.vs.videostation.entity.SeaType;
 import com.site.vs.videostation.mapper.SeaTypeMapper;
@@ -58,9 +59,11 @@ public class CategoryService {
         }else {
             seaDatas =  displayService.findListByTypeId(id,year,area,page,pageSize);
         }
+        PageBean<SeaData> pageBean = new PageBean(seaDatas);
         CategoryDetail detail = new CategoryDetail();
         if (seaDatas != null) {
-            detail.setSeaList(seaDatas);
+            detail.setSeaList(pageBean.getList());
+            detail.setCount(pageBean.getTotal());
         }
 
         if (types != null) {

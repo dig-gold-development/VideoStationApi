@@ -19,7 +19,7 @@ public class CategoryController {
 
 
     @RequestMapping(value = "list")
-    public ApiResponse findChannelListById( @RequestParam(value = "tid",required = true)  Short id,@RequestParam(value = "year",required = false) String year,@RequestParam(value = "area",required = false) String area,@RequestParam(value = "page",required = false,defaultValue = "1") int page,@RequestParam(value = "pageSize",required = false,defaultValue = "10") int pageSize) {
+    public ApiResponse findChannelListById( @RequestParam(value = "tid",required = true)  Short id,@RequestParam(value = "year",required = false) String year,@RequestParam(value = "area",required = false) String area,@RequestParam(value = "page",required = false,defaultValue = "1") int page,@RequestParam(value = "pageSize",required = false,defaultValue = "20") int pageSize) {
 
         SeaData seaData = new SeaData();
         seaData.setTid(id);
