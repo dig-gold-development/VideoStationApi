@@ -299,11 +299,11 @@
             #{tid}
         </foreach>
         <if test="year != null and year !=''">
-            AND v_publishyear = ${year}
+            AND v_publishyear = #{year}
         </if>
 
         <if test="area != null and area !=''">
-            AND v_publisharea= ${area}
+            AND v_publisharea= #{area}
         </if>
 
 		ORDER BY
