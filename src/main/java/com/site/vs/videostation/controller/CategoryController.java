@@ -23,12 +23,12 @@ public class CategoryController {
 
         SeaData seaData = new SeaData();
         seaData.setTid(id);
-        if (year != "" && year != null) {
+        if (year != null && !year.equals("")) {
             Integer yearInteger = new Integer(year);
             seaData.setvPublishyear(yearInteger.intValue());
         }
 
-        if (area != "" && year != null) {
+        if (area != null && !area.equals("") ) {
             seaData.setvPublisharea(area);
         }
         CategoryDetail detail =  categoryService.findChannelDetailByData(seaData,page,pageSize);
