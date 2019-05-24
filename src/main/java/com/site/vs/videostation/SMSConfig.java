@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ConfigurationProperties(prefix="sms")
-@PropertySource(value = "file:config/sms.properties")
+@PropertySource(value = "classpath:config/sms.properties")
 public class SMSConfig {
     public int appid;
     public String appkey;
