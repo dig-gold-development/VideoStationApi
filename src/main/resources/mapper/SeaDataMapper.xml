@@ -181,7 +181,7 @@
 		CASE
 		<![CDATA[ locate( 'http', v_pic ) ]]>
 		WHEN 0 THEN
-		<![CDATA[ CONCAT( 'http://188.131.252.174/cms/', v_pic ) ]]> ELSE v_pic
+		<![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
 		END as v_pic,
 		v_actor,
 		v_publishyear,
@@ -210,7 +210,7 @@
 			CASE
 				<![CDATA[ locate( 'http', v_pic ) ]]>
 			WHEN 0 THEN
-				<![CDATA[ CONCAT( 'http://188.131.252.174/cms/', v_pic ) ]]> ELSE v_pic
+				<![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
 			END as v_pic,
 			v_actor,
 			v_publishyear,
@@ -231,7 +231,7 @@
 			CASE
 				<![CDATA[ locate( 'http', v_pic ) ]]>
 			WHEN 0 THEN
-				<![CDATA[ CONCAT( 'http://188.131.252.174/cms/', v_pic ) ]]> ELSE v_pic
+				<![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
 			END as v_pic,
 			v_actor,
 			v_publishyear,
@@ -255,7 +255,18 @@
 
 
   <select id="findSeaDataRecent" resultMap="BaseResultMap">
-		select v_id,v_name,v_pic,v_actor,v_publishyear,v_publisharea  from sea_data order by v_addtime desc limit 5
+		select v_id,v_name,
+		CASE
+        <![CDATA[ locate( 'http', v_pic ) ]]>
+        WHEN 0 THEN
+        <![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
+         END as v_pic,
+         v_actor,
+         v_publishyear,
+         v_publisharea
+         from
+         sea_data
+         order by v_addtime desc limit 5
 	</select>
 
   <select id="findSeaDataByTypeIds" resultMap="BaseResultMap">
@@ -264,7 +275,7 @@
     CASE
     <![CDATA[ locate( 'http', v_pic ) ]]>
     WHEN 0 THEN
-    <![CDATA[ CONCAT( 'http://188.131.252.174/cms/', v_pic ) ]]> ELSE v_pic
+    <![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
     END as v_pic,
     v_actor,
     v_publishyear,
@@ -275,6 +286,9 @@
     <foreach close=")" collection="list" item="tid" open="(" separator=",">
       #{tid}
     </foreach>
+
+    order by v_addtime desc
+
   </select>
 
     <select id="findSeaDataByFilterIds"  resultMap="BaseResultMap">
@@ -285,7 +299,7 @@
 			CASE
 				<![CDATA[ locate( 'http', v_pic ) ]]>
 			WHEN 0 THEN
-				<![CDATA[ CONCAT( 'http://188.131.252.174/cms/', v_pic ) ]]> ELSE v_pic
+				<![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
 			END as v_pic,
 			v_actor,
 			v_publishyear,

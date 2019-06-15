@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.site.vs.videostation.mapper.DisplayMapper" >
-    <select id="findDisplayDataByTypeId" parameterType="int" resultType="Display">
+    <select id="findDisplayDataByTypeId" parameterType="int" resultType="com.site.vs.videostation.dto.DisplayDTO">
 
 		SELECT
 			v_id,
@@ -22,11 +22,11 @@
 			v_addtime DESC
 	</select>
 
-	<select id="findDisplayDataRecent" resultType="Display">
+	<select id="findDisplayDataRecent" resultType="com.site.vs.videostation.dto.DisplayDTO">
 		select v_id,v_name,v_pic,v_actor,v_publishyear,v_publisharea  from sea_data order by v_addtime desc limit 5
 	</select>
 
-	<select id="findDisplayDataByTypeIds" resultType="Display">
+	<select id="findDisplayDataByTypeIds" resultType="com.site.vs.videostation.dto.DisplayDTO">
 		select  v_id,
 		v_name,
 		CASE
@@ -45,7 +45,7 @@
 		</foreach>
 	</select>
 
-	<select id="findDisplayDataCountInfoByTypeIds" resultType="Display">
+	<select id="findDisplayDataCountInfoByTypeIds" resultType="com.site.vs.videostation.dto.DisplayDTO">
 		select v_name,
 		count(1)
 		from

@@ -1,15 +1,12 @@
-package com.site.vs.videostation.entity;
+package com.site.vs.videostation.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.pagehelper.Page;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class PageBean<T> implements Serializable {
-    private  static  final long serialVersionUID = -9202109574544652243L;
+public class PageBeanDTO<T>  {
 
     @JsonProperty("count")
     private long total;
@@ -20,17 +17,6 @@ public class PageBean<T> implements Serializable {
     @JsonProperty("page")
     private  int pageNum;
 
-    public PageBean(List<T> list) {
-        if (list instanceof Page) {
-            Page<T> page = (Page<T>) list;
-            this.pageNum = page.getPageNum();
-            this.pageSize = page.getPageSize();
-            this.total = page.getTotal();
-            this.pages = page.getPages();
-            this.list = page;
-            this.size = page.size();
-        }
-    }
 
 
     public long getTotal() {
