@@ -42,7 +42,5 @@ public class RankController  {
         pagePageDTO.setTotal(pageBean.getTotal());
         ApiResponse data = ApiResponseUtil.success(pagePageDTO);
         return data;
-
-
     }
 }

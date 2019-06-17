@@ -13,4 +13,30 @@
 		select v_id as tid,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where v_name = #{name}  order by v_addtime desc
 	</select>
 
+	<select id="getByTidAndTName" resultType="SeaData">
+		select v_id ,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where
+		tid = #{id}
+		<if test="name != null and name !=''">
+			and v_name like CONCAT(CONCAT('%',#{name},'%'))
+		</if>
+
+		order by v_addtime desc
+	</select>
+
+	<select id="getByTidsAndTName" resultType="SeaData">
+		select v_id ,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where
+		tid in
+		<foreach close=")" collection="list" item="tid" open="(" separator=",">
+			#{tid}
+		</foreach>
+
+		<if test="name != null and name !=''">
+			and v_name like CONCAT(CONCAT('%',#{name},'%'))
+		</if>
+
+		 order by v_addtime desc
+	</select>
+
+
+
 </mapper>

@@ -1,6 +1,7 @@
 package com.site.vs.videostation.service;
 
 
+import com.site.vs.videostation.SeaCmsConfig;
 import com.site.vs.videostation.dto.DisplayDTO;
 import com.site.vs.videostation.entity.*;
 import com.site.vs.videostation.mapper.SeaTypeMapper;
@@ -20,6 +21,9 @@ public class HomePageService {
     @Autowired
     SeaTypeMapper categoryMapper;
 
+    @Autowired
+    private SeaCmsConfig mSeaCmsConfig;
+
 
     public ApiResponse findHomeVideoForRecent() {
 
@@ -36,7 +40,7 @@ public class HomePageService {
         homePage.setSlide_list(recentListDTO);
 
 
-        List<SeaData> moiveList = findTopCategorayByTypeId(28);
+        List<SeaData> moiveList = findTopCategorayByTypeId(mSeaCmsConfig.dianying);
         List<DisplayDTO> moiveListDTO = new ArrayList<>();
         for (SeaData source : moiveList) {
             DisplayDTO target = new DisplayDTO();
@@ -49,7 +53,7 @@ public class HomePageService {
         homePage.setMove_list(movieData);
 
         //电视剧
-       List<SeaData> teleplayList = findTopCategorayByTypeId(29);
+       List<SeaData> teleplayList = findTopCategorayByTypeId(mSeaCmsConfig.dianshiju);
         List<DisplayDTO> teleplayListDTO = new ArrayList<>();
         for (SeaData source : teleplayList) {
             DisplayDTO target = new DisplayDTO();
@@ -62,7 +66,7 @@ public class HomePageService {
        homePage.setTv_list(tvData);
 
         //综艺
-        List<SeaData> artsList = findTopCategorayByTypeId(30);
+        List<SeaData> artsList = findTopCategorayByTypeId(mSeaCmsConfig.zongyi);
         List<DisplayDTO> artsListDTO = new ArrayList<>();
         for (SeaData source : artsList) {
             DisplayDTO target = new DisplayDTO();
@@ -75,7 +79,7 @@ public class HomePageService {
         homePage.setArts_list(artsData);
 
         //动漫
-        List<SeaData> comicList = findTopCategorayByTypeId(31);
+        List<SeaData> comicList = findTopCategorayByTypeId(mSeaCmsConfig.dongman);
         List<DisplayDTO> comicListDTO = new ArrayList<>();
         for (SeaData source : comicList) {
             DisplayDTO target = new DisplayDTO();
@@ -88,7 +92,7 @@ public class HomePageService {
         homePage.setComic_list(comicData);
 
         //韩剧
-        List<SeaData>  koreanList = findTopCategorayByTypeId(27);
+        List<SeaData>  koreanList = findTopCategorayByTypeId(mSeaCmsConfig.hanju);
         List<DisplayDTO> koreanListDTO = new ArrayList<>();
         for (SeaData source : koreanList) {
             DisplayDTO target = new DisplayDTO();
