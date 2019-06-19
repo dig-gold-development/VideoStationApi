@@ -24,4 +24,107 @@ public class SeaCmsConfig {
     public  int zailan;
     public  int qingchun;
 
+    public int getDianying() {
+        return dianying;
+    }
+
+    public void setDianying(int dianying) {
+        this.dianying = dianying;
+    }
+
+    public int getDianshiju() {
+        return dianshiju;
+    }
+
+    public void setDianshiju(int dianshiju) {
+        this.dianshiju = dianshiju;
+    }
+
+    public int getZongyi() {
+        return zongyi;
+    }
+
+    public void setZongyi(int zongyi) {
+        this.zongyi = zongyi;
+    }
+
+    public int getDongman() {
+        return dongman;
+    }
+
+    public void setDongman(int dongman) {
+        this.dongman = dongman;
+    }
+
+    public int getHanju() {
+        return hanju;
+    }
+
+    public void setHanju(int hanju) {
+        this.hanju = hanju;
+    }
+
+    public int getXiju() {
+        return xiju;
+    }
+
+    public void setXiju(int xiju) {
+        this.xiju = xiju;
+    }
+
+    public int getAiqing() {
+        return aiqing;
+    }
+
+    public void setAiqing(int aiqing) {
+        this.aiqing = aiqing;
+    }
+
+    public int getKehuan() {
+        return kehuan;
+    }
+
+    public void setKehuan(int kehuan) {
+        this.kehuan = kehuan;
+    }
+
+    public int getKongbu() {
+        return kongbu;
+    }
+
+    public void setKongbu(int kongbu) {
+        this.kongbu = kongbu;
+    }
+
+    public int getJuqing() {
+        return juqing;
+    }
+
+    public void setJuqing(int juqing) {
+        this.juqing = juqing;
+    }
+
+    public int getZhanzheng() {
+        return zhanzheng;
+    }
+
+    public void setZhanzheng(int zhanzheng) {
+        this.zhanzheng = zhanzheng;
+    }
+
+    public int getZailan() {
+        return zailan;
+    }
+
+    public void setZailan(int zailan) {
+        this.zailan = zailan;
+    }
+
+    public int getQingchun() {
+        return qingchun;
+    }
+
+    public void setQingchun(int qingchun) {
+        this.qingchun = qingchun;
+    }
 }
