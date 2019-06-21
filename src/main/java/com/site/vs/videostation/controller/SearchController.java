@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -25,7 +27,7 @@ public class SearchController {
     private SearchService searchService;
 
     @RequestMapping(value = "search")
-    public ApiResponse getRankById(@RequestParam("page") int page, @RequestParam("type") int type, @RequestParam("keywords") String keywords) {
+    public ApiResponse getRankById(@RequestParam(value = "page",required = false,defaultValue = "1") int page, @RequestParam("type") int type, @RequestParam("keywords") String keywords) {
         List<SeaData> searchList =  searchService.getByTidAndTName(type,keywords,page);
         PageBean<SeaData> pageBean = new PageBean(searchList);
         List<DisplayDTO> displayListDTO = new ArrayList();
@@ -45,7 +47,20 @@ public class SearchController {
         ApiResponse data = ApiResponseUtil.success(pagePageDTO);
         return data;
 
+    }
+    @RequestMapping(value = "search/hot")
+    public  ApiResponse getHotKeywords() {
 
+        List hotList = new ArrayList();
+        hotList.add("搞笑");
+        hotList.add("恐怖");
+        hotList.add("惊喜");
+        hotList.add("神奇");
+        hotList.add("青春");
+        Map hotMap = new HashMap();
+        hotMap.put("hot_list",hotList);
+        ApiResponse data = ApiResponseUtil.success(hotMap);
+        return data;
     }
 
 }

@@ -1,20 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.site.vs.videostation.mapper.SearchMapper" >
+
+	<resultMap id="BaseResultMap" type="com.site.vs.videostation.entity.SeaData">
+		<id column="v_id" jdbcType="INTEGER" property="vId" />
+		<result column="tid" jdbcType="SMALLINT" property="tid" />
+		<result column="v_name" jdbcType="CHAR" property="vName" />
+		<result column="v_state" jdbcType="INTEGER" property="vState" />
+		<result column="v_pic" jdbcType="CHAR" property="vPic" />
+		<result column="v_spic" jdbcType="CHAR" property="vSpic" />
+		<result column="v_gpic" jdbcType="CHAR" property="vGpic" />
+		<result column="v_hit" jdbcType="INTEGER" property="vHit" />
+		<result column="v_money" jdbcType="SMALLINT" property="vMoney" />
+		<result column="v_rank" jdbcType="SMALLINT" property="vRank" />
+		<result column="v_digg" jdbcType="SMALLINT" property="vDigg" />
+		<result column="v_tread" jdbcType="SMALLINT" property="vTread" />
+		<result column="v_commend" jdbcType="SMALLINT" property="vCommend" />
+		<result column="v_wrong" jdbcType="SMALLINT" property="vWrong" />
+		<result column="v_ismake" jdbcType="SMALLINT" property="vIsmake" />
+		<result column="v_actor" jdbcType="VARCHAR" property="vActor" />
+		<result column="v_color" jdbcType="CHAR" property="vColor" />
+		<result column="v_publishyear" jdbcType="INTEGER" property="vPublishyear" />
+		<result column="v_publisharea" jdbcType="CHAR" property="vPublisharea" />
+		<result column="v_addtime" jdbcType="INTEGER" property="vAddtime" />
+		<result column="v_topic" jdbcType="INTEGER" property="vTopic" />
+		<result column="v_note" jdbcType="CHAR" property="vNote" />
+		<result column="v_tags" jdbcType="CHAR" property="vTags" />
+		<result column="v_letter" jdbcType="CHAR" property="vLetter" />
+		<result column="v_isunion" jdbcType="SMALLINT" property="vIsunion" />
+		<result column="v_recycled" jdbcType="SMALLINT" property="vRecycled" />
+		<result column="v_director" jdbcType="VARCHAR" property="vDirector" />
+		<result column="v_enname" jdbcType="VARCHAR" property="vEnname" />
+		<result column="v_lang" jdbcType="VARCHAR" property="vLang" />
+		<result column="v_score" jdbcType="INTEGER" property="vScore" />
+		<result column="v_scorenum" jdbcType="INTEGER" property="vScorenum" />
+		<result column="v_nickname" jdbcType="CHAR" property="vNickname" />
+		<result column="v_reweek" jdbcType="CHAR" property="vReweek" />
+		<result column="v_douban" jdbcType="REAL" property="vDouban" />
+		<result column="v_mtime" jdbcType="REAL" property="vMtime" />
+		<result column="v_imdb" jdbcType="REAL" property="vImdb" />
+		<result column="v_tvs" jdbcType="CHAR" property="vTvs" />
+		<result column="v_company" jdbcType="CHAR" property="vCompany" />
+		<result column="v_dayhit" jdbcType="INTEGER" property="vDayhit" />
+		<result column="v_weekhit" jdbcType="INTEGER" property="vWeekhit" />
+		<result column="v_monthhit" jdbcType="INTEGER" property="vMonthhit" />
+		<result column="v_daytime" jdbcType="INTEGER" property="vDaytime" />
+		<result column="v_weektime" jdbcType="INTEGER" property="vWeektime" />
+		<result column="v_monthtime" jdbcType="INTEGER" property="vMonthtime" />
+		<result column="v_len" jdbcType="VARCHAR" property="vLen" />
+		<result column="v_total" jdbcType="VARCHAR" property="vTotal" />
+		<result column="v_ver" jdbcType="VARCHAR" property="vVer" />
+		<result column="v_psd" jdbcType="VARCHAR" property="vPsd" />
+		<result column="v_extratype" jdbcType="LONGVARCHAR" property="vExtratype" />
+		<result column="v_jq" jdbcType="LONGVARCHAR" property="vJq" />
+		<result column="v_longtxt" jdbcType="LONGVARCHAR" property="vLongtxt" />
+
+		<result column="tname" property="tName" />
+		<result column="play" property="body" />
+		<result column="content" property="content" />
+	</resultMap>
+
     <select id="getAll"  resultType="SeaData">
 		select v_id as tid,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data order by v_addtime desc
 	</select>
 
-	<select id="getByTid" parameterType="int"  resultType="SeaData">
-		select v_id as tid,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where tid = #{tid}  order by v_addtime desc
+	<select id="getByTid" parameterType="int"  resultMap="BaseResultMap">
+		select v_id ,v_name,
+		CASE
+		<![CDATA[ locate( 'http', v_pic ) ]]>
+		WHEN 0 THEN
+		<![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
+		END as v_pic,
+		v_actor,v_publishyear,v_publisharea from sea_data where tid = #{tid}  order by v_addtime desc
 	</select>
 
-	<select id="getByName" parameterType="String"  resultType="SeaData">
-		select v_id as tid,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where v_name = #{name}  order by v_addtime desc
+	<select id="getByName" parameterType="String"  resultMap="BaseResultMap">
+		select v_id ,v_name,
+		CASE
+		<![CDATA[ locate( 'http', v_pic ) ]]>
+		WHEN 0 THEN
+		<![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
+		END as v_pic,
+		v_actor,v_publishyear,v_publisharea from sea_data where v_name like CONCAT('%',#{name},'%')  order by v_addtime desc
 	</select>
 
-	<select id="getByTidAndTName" resultType="SeaData">
-		select v_id ,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where
+	<select id="getByTidAndTName" resultMap="BaseResultMap">
+		select v_id ,v_name,
+		CASE
+		<![CDATA[ locate( 'http', v_pic ) ]]>
+		WHEN 0 THEN
+		<![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
+		END as v_pic,
+	    v_actor,v_publishyear,v_publisharea from sea_data where
 		tid = #{id}
 		<if test="name != null and name !=''">
 			and v_name like CONCAT(CONCAT('%',#{name},'%'))
@@ -23,15 +100,21 @@
 		order by v_addtime desc
 	</select>
 
-	<select id="getByTidsAndTName" resultType="SeaData">
-		select v_id ,v_name,v_pic,v_actor,v_publishyear,v_publisharea from sea_data where
+	<select id="getByTidsAndTName" resultMap="BaseResultMap">
+		select v_id ,v_name,
+		CASE
+		<![CDATA[ locate( 'http', v_pic ) ]]>
+		WHEN 0 THEN
+		<![CDATA[ CONCAT( 'http://www.biggold.net.cn/cms/', v_pic ) ]]> ELSE v_pic
+		END as v_pic,
+		v_actor,v_publishyear,v_publisharea from sea_data where
 		tid in
 		<foreach close=")" collection="list" item="tid" open="(" separator=",">
 			#{tid}
 		</foreach>
 
 		<if test="name != null and name !=''">
-			and v_name like CONCAT(CONCAT('%',#{name},'%'))
+			and v_name like CONCAT('%',#{name},'%')
 		</if>
 
 		 order by v_addtime desc

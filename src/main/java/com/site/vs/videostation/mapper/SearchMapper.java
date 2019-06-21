@@ -11,7 +11,7 @@ public interface SearchMapper {
 
      List<SeaData> getByTid(int tid);
 
-     List<SeaData> getByName(String name);
+     List<SeaData> getByName(@Param("name") String name);
 
      List<SeaData> getByTidAndTName(@Param("id") int tid, @Param("name")String name);
      List<SeaData> getByTidsAndTName(@Param("list") List<Short> idList, @Param("name")String name);
