@@ -104,6 +104,14 @@ public class HomePageService {
         koreanData.setTitle("韩剧");
         homePage.setKorean_list(koreanData);
 
+        //分类
+        HomePage.HomeCategory category = new HomePage.HomeCategory();
+        category.move_id = mSeaCmsConfig.dianying;
+        category.tv_id = mSeaCmsConfig.dianshiju;
+        category.comic_id = mSeaCmsConfig.dongman;
+        category.arts_id = mSeaCmsConfig.zongyi;
+        homePage.setCategory(category);
+
 
         ApiResponse data = ApiResponseUtil.success(homePage);
         return data;

@@ -26,7 +26,6 @@ public class HomePageController  {
     @RequestMapping
     public ApiResponse getHomePage() {
 
-
         ApiResponse homeData = homeService.findHomeVideoForRecent();
         return homeData;
     }

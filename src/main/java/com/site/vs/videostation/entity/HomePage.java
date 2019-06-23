@@ -14,6 +14,14 @@ public class HomePage implements Serializable {
    private DataList arts_list;
    private DataList comic_list;
    private DataList korean_list;
+   private HomeCategory category;
+
+   public static class HomeCategory {
+      public int move_id;
+      public int tv_id;
+      public int comic_id;
+      public int arts_id;
+   }
 
 
 }
